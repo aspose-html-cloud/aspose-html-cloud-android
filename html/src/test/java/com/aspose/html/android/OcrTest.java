@@ -29,11 +29,8 @@
 package com.aspose.html.android;
 
 import static java.lang.System.out;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -45,7 +42,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
 import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.FileExistResponse;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)

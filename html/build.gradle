@@ -1,4 +1,4 @@
-apply from: '../maven_push.gradle'
+//apply from: '../maven_push.gradle'
 
 buildscript {
     repositories {
@@ -69,15 +69,14 @@ artifacts {
 
 dependencies {
     compile project(':storage')
-    compile "com.squareup.retrofit2:retrofit:2.4.0"
-    compile "com.squareup.retrofit2:converter-scalars:2.4.0"
-    compile "com.squareup.retrofit2:converter-gson:2.4.0"
-    compile "io.swagger:swagger-annotations:1.5.15"
+    compile 'com.squareup.retrofit2:retrofit:2.4.0'
+    compile 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
+    compile 'io.swagger:swagger-annotations:1.5.15'
     compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    compile "io.gsonfire:gson-fire:1.8.0"
-    compile "org.threeten:threetenbp:1.3.5"
-
-    testCompile "junit:junit:4.12"
+    compile 'io.gsonfire:gson-fire:1.8.0'
+    compile 'org.threeten:threetenbp:1.3.5'
+    testCompile 'junit:junit:4.12'
 }
 
 

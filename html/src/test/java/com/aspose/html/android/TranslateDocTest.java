@@ -41,7 +41,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
@@ -54,7 +53,6 @@ public class TranslateDocTest {
 
     private String localName;
     TranslationApi api;
-    private StorageApi storageApi;
 
     public TranslateDocTest(
             String name,
@@ -72,7 +70,6 @@ public class TranslateDocTest {
     @Before
     public void initialize() {
         api = new ApiClient().createService(TranslationApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
     }
 
 

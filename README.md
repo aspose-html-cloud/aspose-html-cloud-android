@@ -162,7 +162,7 @@ class TestConversion {
 
 ## ConversionApi
 
-All URIs are relative to *https://api-qa.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -194,6 +194,15 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetTranslateDocument** | **GET** html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
 **GetTranslateDocumentByUrl** | **GET** html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
+
+## SummarizationApi
+
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetDetectHtmlKeywords** | **GET** html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
+**GetDetectHtmlKeywordsByUrl** | **GET** html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
+
 
 
 [Tests](./html/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
