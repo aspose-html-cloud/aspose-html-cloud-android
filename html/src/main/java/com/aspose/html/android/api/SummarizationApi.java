@@ -47,7 +47,7 @@ public interface SummarizationApi {
    * @param name Document name. (required)
    * @param folder Document folder. (optional)
    * @param storage Document storage. (optional)
-   * @return Call&lt;File&gt;
+   * @return Call&lt;ResponseBody&gt;
    */
   @Headers({
     "Content-Type:application/json"
@@ -61,7 +61,7 @@ public interface SummarizationApi {
    * Get the keywords from HTML document from Web specified by its URL using the keyword detection service
    * 
    * @param sourceUrl Source document URL. (required)
-   * @return Call&lt;File&gt;
+   * @return Call&lt;ResponseBody&gt;
    */
   @Headers({
     "Content-Type:application/json"

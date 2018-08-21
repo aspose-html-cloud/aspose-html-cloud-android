@@ -40,7 +40,7 @@ public interface TranslationApi {
      * @param resLang Result language. (required)
      * @param storage The source document storage. (optional)
      * @param folder  The source document folder. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -60,7 +60,7 @@ public interface TranslationApi {
      * @param srcLang   Source language. (required)
      * @param resLang   Result language. (required)
      * @param sourceUrl Source document URL. (required)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"

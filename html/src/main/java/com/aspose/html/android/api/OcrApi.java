@@ -40,7 +40,7 @@ public interface OcrApi {
      * @param ocrEngineLang OCR engine language - language  (optional, default to en)
      * @param folder        The source image folder. (optional)
      * @param storage       The source image storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -61,7 +61,7 @@ public interface OcrApi {
      * @param resLang Result language. (required)
      * @param folder  The source image folder. (optional)
      * @param storage The source image storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"

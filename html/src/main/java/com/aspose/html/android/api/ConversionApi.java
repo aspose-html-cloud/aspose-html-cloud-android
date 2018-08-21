@@ -30,6 +30,7 @@ package com.aspose.html.android.api;
 import retrofit2.Call;
 import retrofit2.http.*;
 import okhttp3.ResponseBody;
+import okhttp3.RequestBody;
 
 public interface ConversionApi {
     /**
@@ -47,7 +48,7 @@ public interface ConversionApi {
      * @param yResolution  Vertical resolution of resulting image. (optional)
      * @param folder       The source document folder. (optional)
      * @param storage      The source document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -83,7 +84,7 @@ public interface ConversionApi {
      * @param yResolution  Vertical resolution of resulting image. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -116,7 +117,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -146,7 +147,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -176,7 +177,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -206,7 +207,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -223,4 +224,136 @@ public interface ConversionApi {
             @Query("folder") String folder,
             @Query("storage") String storage
     );
+
+
+    /**
+     * Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+     *
+     * @param outFormat  (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
+     * @param file A file to be converted. (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @param resolution Resolution of resulting image. Default is 96 dpi. (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @retrofit2.http.FormUrlEncoded
+    @PUT("html/convert/image/{outFormat}")
+    Call<ResponseBody> PutConvertDocumentInRequestToImage(
+            @retrofit2.http.Path("outFormat") String outFormat, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("resolution") Integer resolution
+    );
+
+    /**
+     * Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+     *
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+     * @param file A file to be converted. (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @retrofit2.http.FormUrlEncoded
+    @PUT("html/convert/pdf")
+    Call<ResponseBody> PutConvertDocumentInRequestToPdf(
+            @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin
+    );
+
+    /**
+     * Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+     *
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
+     * @param file A file to be converted. (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @retrofit2.http.FormUrlEncoded
+    @PUT("html/convert/xps")
+    Call<ResponseBody> PutConvertDocumentInRequestToXps(
+            @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin
+    );
+
+    /**
+     * Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+     *
+     * @param name Document name. (required)
+     * @param outFormat  (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.jpg) (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @param resolution Resolution of resulting image. Default is 96 dpi. (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @PUT("html/{name}/convert/image/{outFormat}")
+    Call<ResponseBody> PutConvertDocumentToImage(
+            @retrofit2.http.Path("name") String name, @retrofit2.http.Path("outFormat") String outFormat, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("resolution") Integer resolution, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+    );
+
+    /**
+     * Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+     *
+     * @param name Document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.pdf) (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @PUT("html/{name}/convert/pdf")
+    Call<ResponseBody> PutConvertDocumentToPdf(
+            @retrofit2.http.Path("name") String name, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+    );
+
+    /**
+     * Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+     *
+     * @param name Document name. (required)
+     * @param outPath Full resulting filename (ex. /folder1/folder2/result.xps) (required)
+     * @param width Resulting document page width in points (1/96 inch). (optional)
+     * @param height Resulting document page height in points (1/96 inch). (optional)
+     * @param leftMargin Left resulting document page margin in points (1/96 inch). (optional)
+     * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
+     * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
+     * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @PUT("html/{name}/convert/xps")
+    Call<ResponseBody> PutConvertDocumentToXps(
+            @retrofit2.http.Path("name") String name, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+    );
+
 }

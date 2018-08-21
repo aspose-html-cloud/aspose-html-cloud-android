@@ -38,7 +38,7 @@ public interface DocumentApi {
      * @param name    The document name. (required)
      * @param storage The document folder (optional)
      * @param folder  The document folder. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -58,7 +58,7 @@ public interface DocumentApi {
      * @param xPath     XPath query string. (required)
      * @param storage   The document storage. (optional)
      * @param folder    The document folder. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -73,12 +73,30 @@ public interface DocumentApi {
     );
 
     /**
+     * Return list of HTML fragments matching the specified XPath query by the source page URL.
+     *
+     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
+     * @param sourceUrl Source page URL. (required)
+     * @param xPath XPath query string. (required)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/fragments/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentByXPathByUrl(
+            @Path("outFormat") String outFormat,
+            @Query("sourceUrl") String sourceUrl,
+            @Query("xPath") String xPath
+    );
+
+    /**
      * Return all HTML document images packaged as a ZIP archive.
      *
      * @param name    The document name. (required)
      * @param folder  The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -88,5 +106,19 @@ public interface DocumentApi {
             @Path("name") String name,
             @Query("folder") String folder,
             @Query("storage") String storage
+    );
+
+    /**
+     * Return all HTML page images packaged as a ZIP archive by the source page URL.
+     *
+     * @param sourceUrl Source page URL. (required)
+     * @return Call&lt;ResponseBody&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/images/all")
+    Call<ResponseBody> GetDocumentImagesByUrl(
+            @Query("sourceUrl") String sourceUrl
     );
 }

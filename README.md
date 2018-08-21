@@ -172,6 +172,12 @@ Method | HTTP request | Description
 **GetConvertDocumentToPdfByUrl** | **GET** html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
 **GetConvertDocumentToXps** | **GET** html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
 **GetConvertDocumentToXpsByUrl** | **GET** html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+**PutConvertDocumentInRequestToImage** | **PUT** html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+**PutConvertDocumentInRequestToPdf** | **PUT** html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+**PutConvertDocumentInRequestToXps** | **PUT** html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+**PutConvertDocumentToImage** | **PUT** html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+**PutConvertDocumentToPdf** | **PUT** html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+**PutConvertDocumentToXps** | **PUT** html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
 
 ## DocumentApi
 
@@ -179,7 +185,9 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetDocument** | **GET** html/{name} | Return the HTML document by the name from default or specified storage.
 **GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
+**GetDocumentFragmentByXPathByUrl** | **GET** html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
 **GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+**GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
 ## OcrApi
 

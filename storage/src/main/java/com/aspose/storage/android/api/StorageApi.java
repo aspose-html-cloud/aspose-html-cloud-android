@@ -62,7 +62,7 @@ public interface StorageApi {
      * @param path      Path of the file including the file name and extension e.g. /file.ext (required)
      * @param versionId File&#39;s version (optional)
      * @param storage   User&#39;s storage name (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -100,7 +100,7 @@ public interface StorageApi {
      * @param file      File to upload (required)
      * @param versionId Source file&#39;s version (optional)
      * @param storage   User&#39;s storage name (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @PUT("storage/file")
     Call<ResponseMessage> PutCreate(
@@ -135,7 +135,7 @@ public interface StorageApi {
      *
      * @param path    Start with name of storage e.g. root folder &#39;/&#39;or some folder &#39;/folder1/..&#39; (optional, default to /)
      * @param storage User&#39;s storage name (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseBody&gt;
      */
     @Headers({
             "Content-Type:application/json"
@@ -172,7 +172,7 @@ public interface StorageApi {
      * @param path        Target folder&#39;s path e.g. Folder1/Folder2/. The folders will be created recursively (required)
      * @param storage     User&#39;s source storage name (optional)
      * @param destStorage User&#39;s destination storage name (optional)
-     * @return Call&lt;File&gt;
+     * @return Call&lt;ResponseMessage&gt;
      */
     @Headers({
             "Content-Type:application/json"
