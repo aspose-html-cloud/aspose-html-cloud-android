@@ -45,7 +45,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class HtmlToImageTest {
+public class HtmlToImageTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -77,6 +77,7 @@ public class HtmlToImageTest {
             Integer xResolution,
             Integer yResolution
     ) {
+        super();
         this.name = "test1.html";
         this.outFormat = outFormat;
         this.width = width;

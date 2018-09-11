@@ -51,7 +51,7 @@ import com.aspose.storage.android.model.FileExistResponse;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class DocLoadTest {
+public class DocLoadTest extends BaseTest {
     private String name;
     private String storage;
     private String folder;
@@ -62,6 +62,7 @@ public class DocLoadTest {
     private static String localFolder = Configuration.getTestDstDir();
 
     public DocLoadTest(String name) {
+        super();
         this.name = name;
         this.localName = "DocLoad_" + name;
         this.folder = "HtmlTestDoc";

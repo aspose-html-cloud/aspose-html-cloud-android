@@ -44,7 +44,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class HtmlToPdfTest {
+public class HtmlToPdfTest extends BaseTest {
     private String name;
     private Integer width;
     private Integer height;
@@ -70,6 +70,7 @@ public class HtmlToPdfTest {
             Integer topMargin,
             Integer bottomMargin
     ) {
+        super();
         this.name = "test1.html";
         this.width = width;
         this.height = height;

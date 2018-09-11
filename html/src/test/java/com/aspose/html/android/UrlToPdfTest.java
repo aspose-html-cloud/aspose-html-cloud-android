@@ -28,8 +28,6 @@
 
 package com.aspose.html.android;
 
-import java.io.File;
-import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -41,18 +39,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import com.aspose.html.android.api.ConversionApi;
-import com.aspose.html.android.Configuration;
 import org.junit.runners.Parameterized;
 import retrofit2.Call;
-import retrofit2.Response;
 
 
 @RunWith(Parameterized.class)
-public class UrlToPdfTest {
+public class UrlToPdfTest extends BaseTest {
     private String sourceUrl;
     private Integer width;
     private Integer height;
@@ -76,6 +71,7 @@ public class UrlToPdfTest {
             Integer topMargin,
             Integer bottomMargin
     ) {
+        super();
         this.sourceUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
         this.width = width;
         this.height = height;

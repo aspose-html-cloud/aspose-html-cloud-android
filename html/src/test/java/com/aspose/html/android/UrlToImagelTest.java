@@ -46,7 +46,7 @@ import static org.junit.Assert.fail;
 
 
 @RunWith(Parameterized.class)
-public class UrlToImagelTest {
+public class UrlToImagelTest extends BaseTest {
 
     private String sourceUrl;
     private String outFormat;
@@ -76,6 +76,7 @@ public class UrlToImagelTest {
             Integer xResolution,
             Integer yResolution//,
     ) {
+        super();
         this.sourceUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
         this.outFormat = outFormat;
         this.width = width;

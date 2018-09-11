@@ -45,7 +45,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class OcrTranslateTest {
+public class OcrTranslateTest extends BaseTest {
     private String name;
     private String srcLang;
     private String resLang;
@@ -58,6 +58,7 @@ public class OcrTranslateTest {
 
 
     public OcrTranslateTest(String name, String srcLang, String resLang) {
+        super();
         this.name = name;
         this.srcLang = srcLang;
         this.resLang = resLang;

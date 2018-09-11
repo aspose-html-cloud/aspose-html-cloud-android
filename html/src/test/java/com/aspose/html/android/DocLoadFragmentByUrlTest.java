@@ -43,7 +43,7 @@ import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
-public class DocLoadFragmentByUrlTest {
+public class DocLoadFragmentByUrlTest extends BaseTest{
     private String sourceUrl;
     private String xPath;
     private String outFormat;
@@ -52,6 +52,7 @@ public class DocLoadFragmentByUrlTest {
 
 
     public DocLoadFragmentByUrlTest(Integer numTest, String sourceUrl, String xPath, String outFormat) {
+        super();
         this.sourceUrl = sourceUrl;
         this.xPath = xPath;
         this.outFormat = outFormat;

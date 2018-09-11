@@ -47,7 +47,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class PutConvertImgTest {
+public class PutConvertImgTest extends BaseTest {
 
     private String name;
     private String outFormat;
@@ -79,7 +79,8 @@ public class PutConvertImgTest {
         Integer resolution
     )
     {
-		this.name			=	"test1.html";			         
+		super();
+		this.name			=	"test1.html";
 		this.outFormat		=	outFormat;   		   
 		this.width			=	width;       		  
 		this.height         =	height;              

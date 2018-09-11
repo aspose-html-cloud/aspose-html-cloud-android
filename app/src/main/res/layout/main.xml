@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:columnCount="3">
+
+    <Button
+            android:id="@+id/links"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dip"
+            android:onClick="clickLinks"
+            android:text="@string/links"/>
+    <Button
+            android:id="@+id/keywords"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dip"
+            android:onClick="clickKeywords"
+            android:text="@string/keywords"
+            android:layout_row="0"
+            android:layout_column="2" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_columnSpan="3"
+        android:width="300dp"
+        android:gravity="fill"
+        android:text="@string/enter_url" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="2"
+        android:ems="10"
+        android:gravity="fill"
+        android:inputType="textPersonName"
+        android:text="https://www.le.ac.uk/oerresources/bdra/html/page_02.htm" />
+
+    <EditText
+        android:id="@+id/result"
+        android:layout_width="300dp"
+        android:layout_height="433dp"
+        android:layout_column="0"
+        android:layout_columnSpan="3"
+        android:layout_row="3"
+        android:ems="10"
+        android:gravity="fill"
+        android:inputType="textMultiLine"
+        android:singleLine="false"
+        android:text="@string/result" />
+
+
+</GridLayout>

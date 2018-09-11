@@ -1,6 +1,6 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
-* <copyright company="Aspose" file="OcrTest.java">
+* <copyright company="Aspose" file="DocLoadFragmentByUrlTest.java">
 *   Copyright (c) 2018 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
@@ -28,66 +28,66 @@
 
 package com.aspose.html.android;
 
-import static java.lang.System.out;
-import static org.junit.Assert.fail;
+import com.aspose.html.android.api.DocumentApi;
 
-import java.util.Arrays;
-import java.util.Collection;
-
-import com.aspose.html.android.api.OcrApi;
-import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
-import com.aspose.storage.android.api.StorageApi;
+import java.util.Arrays;
+import java.util.Collection;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 
+import static java.lang.System.out;
+import static org.junit.Assert.fail;
+
 @RunWith(Parameterized.class)
-public class OcrTest extends BaseTest {
-    private String name;
-    private String ocrEngineLang;
-    private String folder;
-    private String storage;
+public class DocLoadFragmentCSSByUrlTest extends BaseTest{
+    private String sourceUrl;
+    private String selector;
+    private String outFormat;
+    private String localName;
+    private DocumentApi api;
 
-    private OcrApi api;
-    private StorageApi storageApi;
 
-    private static String localName = Configuration.getTestDstDir();
-
-    public OcrTest(String name, String ocrEngineLang) {
+    public DocLoadFragmentCSSByUrlTest(String sourceUrl, String selector, String outFormat) {
         super();
-        this.name = name;
-        this.ocrEngineLang = ocrEngineLang;
-        this.folder = "HtmlTestDoc";
-        this.storage = null;
+        this.sourceUrl = sourceUrl;
+        this.selector = selector;
+        this.outFormat = outFormat;
 
-        this.localName = "OcrDoc_" + name + "_" + ocrEngineLang + ".html";
+        String ext = outFormat.equals("json") ? ".json" : ".html";
+        this.localName = "DocCSSByUrl_" + ext;
+
     }
 
     @Before
-    public void initialize() {
-        api = new ApiClient().createService(OcrApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
+    public void initialize()
+    {
+        api = new ApiClient().createService(DocumentApi.class);
     }
 
     @Parameterized.Parameters
     public static Collection testData() {
         return Arrays.asList(new Object[][]
                 {
-                        {"test_ocr.png", "en"},
-                        {"test_ocr.jpg", "en"}
+                        {"https://stallman.org/articles/anonymous-payments-thru-phones.html","p", "plain"},
+                        {"https://stallman.org/articles/anonymous-payments-thru-phones.html","p", "json"}
                 });
     }
 
     @Test
     public void test() {
-        out.println("Test ocr ");
+        out.println("Test docCSSByUrl load ");
         try {
-            TestHelper.uploadFile(name, folder);
-            Call<ResponseBody> call = api.GetRecognizeAndImportToHtml(name, ocrEngineLang, folder, storage);
+
+            Call<ResponseBody> call = api.GetDocumentFragmentsByCSSSelectorByUrl(outFormat, sourceUrl, selector);
+
             TestHelper.checkAndSave(call, localName);
+
         } catch (Exception e) {
             e.printStackTrace();
             fail();

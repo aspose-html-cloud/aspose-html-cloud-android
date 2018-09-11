@@ -38,7 +38,7 @@ import retrofit2.Call;
 /**
  * API tests for SummarizationApi
  */
-public class SummarizationApiTest {
+public class SummarizationApiTest extends BaseTest {
 
     private SummarizationApi api;
 
@@ -46,7 +46,7 @@ public class SummarizationApiTest {
     public void setup() {
         api = new ApiClient().createService(SummarizationApi.class);
     }
-
+    BaseTest cfg = new BaseTest();
     /**
      * Get the HTML document keywords using the keyword detection service.
      *

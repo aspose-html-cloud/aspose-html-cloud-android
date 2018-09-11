@@ -91,6 +91,46 @@ public interface DocumentApi {
     );
 
     /**
+     * Return list of HTML fragments matching the specified CSS selector.
+     *
+     * @param name The document name. (required)
+     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
+     * @param selector CSS selector string. (required)
+     * @param folder The document folder. (optional)
+     * @param storage The document storage. (optional)
+     * @return Call&lt;File&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/{name}/fragments/css/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentsByCSSSelector(
+            @retrofit2.http.Path("name") String name,
+            @retrofit2.http.Path("outFormat") String outFormat,
+            @retrofit2.http.Query("selector") String selector,
+            @retrofit2.http.Query("folder") String folder,
+            @retrofit2.http.Query("storage") String storage
+    );
+
+    /**
+     * Return list of HTML fragments matching the specified CSS selector by the source page URL.
+     *
+     * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
+     * @param sourceUrl Source page URL. (required)
+     * @param selector CSS selector string. (required)
+     * @return Call&lt;File&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/fragments/css/{outFormat}")
+    Call<ResponseBody> GetDocumentFragmentsByCSSSelectorByUrl(
+            @retrofit2.http.Path("outFormat") String outFormat,
+            @retrofit2.http.Query("sourceUrl") String sourceUrl,
+            @retrofit2.http.Query("selector") String selector
+    );
+
+    /**
      * Return all HTML document images packaged as a ZIP archive.
      *
      * @param name    The document name. (required)

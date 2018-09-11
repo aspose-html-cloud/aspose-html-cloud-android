@@ -45,7 +45,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class PutConvertDocXpsTest {
+public class PutConvertDocXpsTest extends BaseTest {
     private String name;
     private Integer width;
     private Integer height;
@@ -72,7 +72,8 @@ public class PutConvertDocXpsTest {
         Integer bottomMargin
     )
     {
-		this.name			=	"test1.html";			         
+		super();
+		this.name			=	"test1.html";
 		this.width			=	width;       		  
 		this.height         =	height;              
 		this.leftMargin     =	leftMargin;          

@@ -47,7 +47,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class PutConvertPdfTest {
+public class PutConvertPdfTest extends BaseTest {
     private String  name;
     private Integer width;
     private Integer height;
@@ -75,7 +75,8 @@ public class PutConvertPdfTest {
         Integer bottomMargin
     )
     {
-		this.name		    =	"test1.html";			         
+		super();
+		this.name		    =	"test1.html";
 		this.width			=	width;       		  
 		this.height         =	height;              
 		this.leftMargin     =	leftMargin;          

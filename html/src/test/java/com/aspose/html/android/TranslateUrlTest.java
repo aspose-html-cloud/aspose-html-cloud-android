@@ -43,7 +43,7 @@ import retrofit2.Call;
 
 
 @RunWith(Parameterized.class)
-public class TranslateUrlTest {
+public class TranslateUrlTest extends BaseTest {
     String sourceUrl;
     String srcLang;
     String resLang;
@@ -57,7 +57,8 @@ public class TranslateUrlTest {
     		String srcLang, 
     		String resLang) 
     {
-    	this.sourceUrl = sourceUrl;
+        super();
+        this.sourceUrl = sourceUrl;
     	this.srcLang = srcLang;
     	this.resLang = resLang;
 		this.localName = "TranslateUrl_" + srcLang +"_" + resLang + ".zip";

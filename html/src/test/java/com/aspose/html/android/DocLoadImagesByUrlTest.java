@@ -43,13 +43,14 @@ import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
-public class DocLoadImagesByUrlTest {
+public class DocLoadImagesByUrlTest  extends BaseTest{
     private String sourceUrl;
     private String localName;
     private DocumentApi api;
 
 
     public DocLoadImagesByUrlTest(Integer numTest, String sourceUrl) {
+        super();
         this.sourceUrl = sourceUrl;
         this.localName = "DocLoadImagesByUrl" + numTest + ".zip";
     }

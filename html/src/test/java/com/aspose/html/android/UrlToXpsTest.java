@@ -44,7 +44,7 @@ import static org.junit.Assert.assertTrue;
 
 
 @RunWith(Parameterized.class)
-public class UrlToXpsTest {
+public class UrlToXpsTest extends BaseTest {
     private String sourceUrl;
     private Integer width;
     private Integer height;
@@ -67,6 +67,7 @@ public class UrlToXpsTest {
             Integer topMargin,
             Integer bottomMargin
     ) {
+        super();
         this.sourceUrl = "https://www.google.com/";
         this.width = width;
         this.height = height;

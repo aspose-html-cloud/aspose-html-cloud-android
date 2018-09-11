@@ -48,7 +48,7 @@ import com.aspose.storage.android.model.FileExistResponse;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class DocLoadImagesTest {
+public class DocLoadImagesTest extends BaseTest {
     private String name;
     private String storage;
     private String folder;
@@ -59,6 +59,7 @@ public class DocLoadImagesTest {
 
 
     public DocLoadImagesTest(String name) {
+        super();
         this.name = name;
         this.folder = "HtmlTestDoc";
         this.storage = null;

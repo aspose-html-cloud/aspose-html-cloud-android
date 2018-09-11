@@ -48,7 +48,7 @@ import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class DocLoadFragmentTest {
+public class DocLoadFragmentTest  extends BaseTest{
     private String name;
     private String xPath;
     private String outFormat;
@@ -62,6 +62,7 @@ public class DocLoadFragmentTest {
 
 
     public DocLoadFragmentTest(String name, String xPath, String outFormat) {
+        super();
         this.name = name;
         this.xPath = xPath;
         this.outFormat = outFormat;

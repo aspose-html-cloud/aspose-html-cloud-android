@@ -44,7 +44,7 @@ import org.junit.runners.Parameterized;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class TranslateDocTest {
+public class TranslateDocTest extends BaseTest {
     private String name;
     private String srcLang;
     private String resLang;
@@ -59,6 +59,7 @@ public class TranslateDocTest {
             String srcLang,
             String resLang)
     {
+        super();
         this.name = name;
         this.srcLang = srcLang;
         this.resLang = resLang;

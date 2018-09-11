@@ -49,7 +49,7 @@ import com.aspose.storage.android.model.FileExistResponse;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
-public class HtmlToXpsTest {
+public class HtmlToXpsTest extends BaseTest {
     private String name;
     private Integer width;
     private Integer height;
@@ -75,6 +75,7 @@ public class HtmlToXpsTest {
             Integer topMargin,
             Integer bottomMargin
     ) {
+        super();
         this.name = "test1.html";
         this.width = width;
         this.height = height;

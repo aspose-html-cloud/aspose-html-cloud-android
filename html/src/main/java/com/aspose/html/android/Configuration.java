@@ -24,74 +24,83 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-
-import com.google.gson.Gson;
 
 public class Configuration {
 
-    static Configuration config = getConfig();
 
-    // For json conversions only    
-    private String basePath;
-    private String authPath;
-    private String apiKey;
-    private String appSID;
-    private String defaultUserAgent;
-    private String srcTest;
-    private String dstTest;
-    private boolean debug;
+    static String basePath;
+    static String authPath;
+    static String apiKey;
+    static String appSID;
+    static String defaultUserAgent;
+    static String srcTest;
+    static String dstTest;
+    static boolean debug;
 
-
-    private static Configuration getConfig() {
-
-        String path = System.getProperty("user.dir") + "/../setting/config.json";
-        try {
-            final BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-            Gson gson = new Gson();
-            Configuration obj = gson.fromJson(bufferedReader, Configuration.class);
-            return obj;
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 
     public static String getBasePath() {
-        return config.basePath;
+        return Configuration.basePath;
+    }
+
+    public static void setBasePath(String basePath) {
+        Configuration.basePath = basePath;
     }
 
     public static String getAuthPath() {
-        return config.authPath;
+        return Configuration.authPath;
+    }
+
+    public static void setAuthPath(String authPath) {
+        Configuration.authPath = authPath;
     }
 
     public static String getAPP_SID() {
-        return config.appSID;
+        return Configuration.appSID;
+    }
+
+    public static void setAPP_SID(String appSID) {
+        Configuration.appSID = appSID;
     }
 
     public static String getAPI_KEY() {
-        return config.apiKey;
+        return Configuration.apiKey;
+    }
+
+    public static void setAPI_KEY(String apiKey){
+        Configuration.apiKey = apiKey;
     }
 
     public static String getTestSrcDir() {
-        return System.getProperty("user.dir") + "/../" + config.srcTest;
+        return System.getProperty("user.dir") + "/../" + Configuration.srcTest;
+    }
+
+    public static void setTestSrcDir(String testSrcDir) {
+        Configuration.srcTest = testSrcDir;
     }
 
     public static String getTestDstDir() {
-        return System.getProperty("user.dir") + "/../" + config.dstTest;
+        return System.getProperty("user.dir") + "/../" + Configuration.dstTest;
+    }
+
+    public static void setTestDstDir(String testDstDir) {
+        Configuration.dstTest = testDstDir;
     }
 
     public static String getUserAgent() {
-        return config.defaultUserAgent;
+        return Configuration.defaultUserAgent;
+    }
+
+    public static void setUserAgent(String userAgent) {
+        Configuration.defaultUserAgent = userAgent;
     }
 
     public static boolean getDebug() {
-        return config.debug;
+        return Configuration.debug;
+    }
+
+    public static void setDebug(Boolean status) {
+        Configuration.debug = status;
     }
 }
 
