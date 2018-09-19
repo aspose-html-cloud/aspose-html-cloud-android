@@ -37,7 +37,7 @@ public interface OcrApi {
      * Recognize text from the image file in the storage and import it to HTML format.
      *
      * @param name          The image file name. (required)
-     * @param ocrEngineLang OCR engine language - language  (optional, default to en)
+     * @param ocrEngineLang OCR engine language - language  (optional, default to en). Allowed values is "en", "de", "fr", "ru".
      * @param folder        The source image folder. (optional)
      * @param storage       The source image storage. (optional)
      * @return Call&lt;ResponseBody&gt;
@@ -57,8 +57,8 @@ public interface OcrApi {
      * Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
      *
      * @param name    The image file name. (required)
-     * @param srcLang Source language - also supposed as the OCR engine language. (required)
-     * @param resLang Result language. (required)
+     * @param srcLang Source language - also supposed as the OCR engine language (required).  Allowed values is "en", "de", "fr", "ru".
+     * @param resLang Result language (required). Allowed values is "en", "de", "fr", "ru".
      * @param folder  The source image folder. (optional)
      * @param storage The source image storage. (optional)
      * @return Call&lt;ResponseBody&gt;
