@@ -34,8 +34,9 @@ import okhttp3.ResponseBody;
 public interface TranslationApi {
     /**
      * Translate the HTML document specified by the name from default or specified storage.
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      *
-     * @param name    Document name. (required)
+     * @param name    Document name (required). Html file in the storage.
      * @param srcLang Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param storage The source document storage. (optional)
@@ -56,6 +57,8 @@ public interface TranslationApi {
 
     /**
      * Translate the HTML document from Web specified by its URL.
+     *
+     * Allowed values for language pairs is en-de, en-fr, en-ru, de-en, ru-en, en-zh, zh-en.
      *
      * @param srcLang   Source language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").
      * @param resLang   Result language (required). Allowed values is "en" (alias "eng", "english"), "de" (alias "deu", "deutsch", "german"), "fr" (alias "fra", "french"), "ru" (alias "rus", "russian"), "zh", alias ("chinese").

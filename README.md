@@ -160,9 +160,12 @@ class TestConversion {
 }
 ```
 
-## ConversionApi
+# Documentation for API Endpoints
 
 All URIs are relative to *https://api.aspose.cloud/v1.1*
+
+
+## ConversionApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -183,9 +186,10 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-**GetDocument** | **GET** html/{name} | Return the HTML document by the name from default or specified storage.
-**GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query. 
+**GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
 **GetDocumentFragmentByXPathByUrl** | **GET** html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
+**GetDocumentFragmentsByCSSSelector** | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
+**GetDocumentFragmentsByCSSSelectorByUrl** | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
 **GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 **GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
@@ -205,12 +209,17 @@ Method | HTTP request | Description
 
 ## SummarizationApi
 
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetDetectHtmlKeywords** | **GET** html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
 **GetDetectHtmlKeywordsByUrl** | **GET** html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 
+## TemplateMergeApi    
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+*GetMergeHtmlTemplate* | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
+*PutMergeHtmlTemplate* | **PUT** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
 [Tests](./html/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.

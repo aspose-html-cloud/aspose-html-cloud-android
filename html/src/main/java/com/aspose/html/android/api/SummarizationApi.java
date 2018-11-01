@@ -29,22 +29,13 @@ package com.aspose.html.android.api;
 
 import retrofit2.Call;
 import retrofit2.http.*;
-
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-
-import java.io.File;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 public interface SummarizationApi {
   /**
    * Get the HTML document keywords using the keyword detection service.
    * 
-   * @param name Document name. (required)
+   * @param name Document name (required). Html file in the storage.
    * @param folder Document folder. (optional)
    * @param storage Document storage. (optional)
    * @return Call&lt;ResponseBody&gt;
@@ -54,7 +45,9 @@ public interface SummarizationApi {
   })
   @GET("html/{name}/summ/keywords")
   Call<ResponseBody> GetDetectHtmlKeywords(
-    @retrofit2.http.Path("name") String name, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+    @Path("name") String name,
+    @Query("folder") String folder,
+    @Query("storage") String storage
   );
 
   /**
@@ -68,7 +61,7 @@ public interface SummarizationApi {
   })
   @GET("html/summ/keywords")
   Call<ResponseBody> GetDetectHtmlKeywordsByUrl(
-    @retrofit2.http.Query("sourceUrl") String sourceUrl
+    @Query("sourceUrl") String sourceUrl
   );
 
 }

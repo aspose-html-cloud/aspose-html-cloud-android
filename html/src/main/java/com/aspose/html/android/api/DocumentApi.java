@@ -33,27 +33,9 @@ import okhttp3.ResponseBody;
 
 public interface DocumentApi {
     /**
-     * Return the HTML document by the name from default or specified storage.
-     *
-     * @param name    The document name. (required)
-     * @param storage The document folder (optional)
-     * @param folder  The document folder. (optional)
-     * @return Call&lt;ResponseBody&gt;
-     */
-    @Headers({
-            "Content-Type:application/json"
-    })
-    @GET("html/{name}")
-    Call<ResponseBody> GetDocument(
-            @Path("name") String name,
-            @Query("storage") String storage,
-            @Query("folder") String folder
-    );
-
-    /**
      * Return list of HTML fragments matching the specified XPath query.
      *
-     * @param name      The document name. (required)
+     * @param name      The document name (required). Presented as zip archive with one html file in the root or html file.
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param xPath     XPath query string. (required)
      * @param storage   The document storage. (optional)
@@ -93,7 +75,7 @@ public interface DocumentApi {
     /**
      * Return list of HTML fragments matching the specified CSS selector.
      *
-     * @param name The document name. (required)
+     * @param name The document name(required). Presented as zip archive with one html file in the root or html file.
      * @param outFormat Output format. Possible values: &#39;plain&#39; and &#39;json&#39;. (required)
      * @param selector CSS selector string. (required)
      * @param folder The document folder. (optional)
@@ -133,7 +115,7 @@ public interface DocumentApi {
     /**
      * Return all HTML document images packaged as a ZIP archive.
      *
-     * @param name    The document name. (required)
+     * @param name    The document name (required). Presented as zip archive with one html file in the root.
      * @param folder  The document folder. (optional)
      * @param storage The document storage. (optional)
      * @return Call&lt;ResponseBody&gt;

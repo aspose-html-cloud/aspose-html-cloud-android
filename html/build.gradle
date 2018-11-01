@@ -3,9 +3,10 @@
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.2.0'
         classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
     }
 }
@@ -18,11 +19,11 @@ repositories {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.3'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.2'
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         buildConfigField "long", "TIMEOUT ", "${1000 * 60 * 10}" // 10 minutes
     }
     compileOptions {
@@ -32,17 +33,17 @@ android {
 
     // Rename the aar correctly
     libraryVariants.all { variant ->
-        variant.outputs.each { output ->
+        variant.outputs.all { output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.aar')) {
                 def fileName = "${project.name}-${variant.baseName}-${version}.aar"
-                output.outputFile = new File(outputFile.parent, fileName)
+                outputFileName = new File("../build/", fileName)
             }
         }
     }
 
     dependencies {
-        provided 'javax.annotation:jsr250-api:1.0'
+        compileOnly 'javax.annotation:jsr250-api:1.0'
     }
 }
 
@@ -68,15 +69,15 @@ artifacts {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    compile project(':storage')
-    compile 'com.squareup.retrofit2:retrofit:2.4.0'
-    compile 'com.squareup.retrofit2:converter-scalars:2.4.0'
-    compile 'com.squareup.retrofit2:converter-gson:2.4.0'
-    compile 'io.swagger:swagger-annotations:1.5.15'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.9.1'
-    compile 'io.gsonfire:gson-fire:1.8.0'
-    compile 'org.threeten:threetenbp:1.3.5'
+    testImplementation 'junit:junit:4.12'
+    implementation project(':storage')
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+    implementation 'io.swagger:swagger-annotations:1.5.15'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.9.1'
+    implementation 'io.gsonfire:gson-fire:1.8.0'
+    implementation 'org.threeten:threetenbp:1.3.5'
 }
 
 

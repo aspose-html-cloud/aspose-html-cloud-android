@@ -241,10 +241,19 @@ public interface ConversionApi {
      * @param resolution Resolution of resulting image. Default is 96 dpi. (optional)
      * @return Call&lt;ResponseBody&gt;
      */
-    @retrofit2.http.FormUrlEncoded
+    @FormUrlEncoded
     @PUT("html/convert/image/{outFormat}")
     Call<ResponseBody> PutConvertDocumentInRequestToImage(
-            @retrofit2.http.Path("outFormat") String outFormat, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("resolution") Integer resolution
+            @Path("outFormat") String outFormat,
+            @Query("outPath") String outPath,
+            @Field("file\"; filename=\"file") RequestBody file,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin,
+            @Query("resolution") Integer resolution
     );
 
     /**
@@ -260,10 +269,17 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
      * @return Call&lt;ResponseBody&gt;
      */
-    @retrofit2.http.FormUrlEncoded
+    @FormUrlEncoded
     @PUT("html/convert/pdf")
     Call<ResponseBody> PutConvertDocumentInRequestToPdf(
-            @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin
+            @Query("outPath") String outPath,
+            @Field("file\"; filename=\"file") RequestBody file,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin
     );
 
     /**
@@ -279,10 +295,17 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
      * @return Call&lt;ResponseBody&gt;
      */
-    @retrofit2.http.FormUrlEncoded
+    @FormUrlEncoded
     @PUT("html/convert/xps")
     Call<ResponseBody> PutConvertDocumentInRequestToXps(
-            @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Field("file\"; filename=\"file") RequestBody file, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin
+            @Query("outPath") String outPath,
+            @Field("file\"; filename=\"file") RequestBody file,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin
     );
 
     /**
@@ -307,7 +330,18 @@ public interface ConversionApi {
     })
     @PUT("html/{name}/convert/image/{outFormat}")
     Call<ResponseBody> PutConvertDocumentToImage(
-            @retrofit2.http.Path("name") String name, @retrofit2.http.Path("outFormat") String outFormat, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("resolution") Integer resolution, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+            @Path("name") String name,
+            @Path("outFormat") String outFormat,
+            @Query("outPath") String outPath,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin,
+            @Query("resolution") Integer resolution,
+            @Query("folder") String folder,
+            @Query("storage") String storage
     );
 
     /**
@@ -330,7 +364,16 @@ public interface ConversionApi {
     })
     @PUT("html/{name}/convert/pdf")
     Call<ResponseBody> PutConvertDocumentToPdf(
-            @retrofit2.http.Path("name") String name, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+            @Path("name") String name,
+            @Query("outPath") String outPath,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin,
+            @Query("folder") String folder,
+            @Query("storage") String storage
     );
 
     /**
@@ -353,7 +396,16 @@ public interface ConversionApi {
     })
     @PUT("html/{name}/convert/xps")
     Call<ResponseBody> PutConvertDocumentToXps(
-            @retrofit2.http.Path("name") String name, @retrofit2.http.Query("outPath") String outPath, @retrofit2.http.Query("width") Integer width, @retrofit2.http.Query("height") Integer height, @retrofit2.http.Query("leftMargin") Integer leftMargin, @retrofit2.http.Query("rightMargin") Integer rightMargin, @retrofit2.http.Query("topMargin") Integer topMargin, @retrofit2.http.Query("bottomMargin") Integer bottomMargin, @retrofit2.http.Query("folder") String folder, @retrofit2.http.Query("storage") String storage
+            @Path("name") String name,
+            @Query("outPath") String outPath,
+            @Query("width") Integer width,
+            @Query("height") Integer height,
+            @Query("leftMargin") Integer leftMargin,
+            @Query("rightMargin") Integer rightMargin,
+            @Query("topMargin") Integer topMargin,
+            @Query("bottomMargin") Integer bottomMargin,
+            @Query("folder") String folder,
+            @Query("storage") String storage
     );
 
 }

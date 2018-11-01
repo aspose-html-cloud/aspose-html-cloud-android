@@ -28,7 +28,6 @@
 package com.aspose.html.android;
 
 import static java.lang.System.out;
-import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -189,10 +188,6 @@ public class PutConvertDocImgTest extends BaseTest {
     @Test
     public void test() {
     
-    	File file = new File(Configuration.getTestSrcDir(), name);
-    	if(!file.exists())
-    		out.println("file not found");
-    	
     	try {
     		// name = test1.html already in storage
     		api.PutConvertDocumentToImage(name, this.folder +"/" + localName, outFormat, width, height, 
