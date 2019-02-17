@@ -32,6 +32,21 @@ import retrofit2.http.*;
 import okhttp3.ResponseBody;
 
 public interface DocumentApi {
+
+    /**
+     * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+     *
+     * @param sourceUrl Source page URL. (required)
+     * @return Call&lt;File&gt;
+     */
+    @Headers({
+            "Content-Type:application/json"
+    })
+    @GET("html/download")
+    Call<ResponseBody> GetDocumentByUrl(
+            @Query("sourceUrl") String sourceUrl
+    );
+
     /**
      * Return list of HTML fragments matching the specified XPath query.
      *
@@ -143,4 +158,5 @@ public interface DocumentApi {
     Call<ResponseBody> GetDocumentImagesByUrl(
             @Query("sourceUrl") String sourceUrl
     );
+
 }

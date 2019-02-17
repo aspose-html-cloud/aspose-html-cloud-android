@@ -59,8 +59,8 @@ public class ApiClient {
     private void createDefaultAdapter() {
 
         okBuilder = new OkHttpClient.Builder();
-        okBuilder.readTimeout(600, TimeUnit.SECONDS)
-                 .connectTimeout(600, TimeUnit.SECONDS);
+        okBuilder.readTimeout(1200, TimeUnit.SECONDS)
+                 .connectTimeout(1200, TimeUnit.SECONDS);
 
         String baseUrl = Configuration.getBasePath();
         if (!baseUrl.endsWith("/"))

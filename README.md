@@ -181,11 +181,17 @@ Method | HTTP request | Description
 **PutConvertDocumentToImage** | **PUT** html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
 **PutConvertDocumentToPdf** | **PUT** html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
 **PutConvertDocumentToXps** | **PUT** html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+**GetConvertDocumentToMHTMLByUrl** | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+content.
+**GetConvertDocumentToMarkdown** | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+**PutConvertDocumentInRequestToMarkdown** | **PUT** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+**PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
 ## DocumentApi
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+**GetDocumentByUrl** | **GET** html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
 **GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
 **GetDocumentFragmentByXPathByUrl** | **GET** html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
 **GetDocumentFragmentsByCSSSelector** | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
@@ -224,14 +230,14 @@ Method | HTTP request | Description
 
 [Tests](./html/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
-[Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
+[Docs](./docs/html/) Full javadoc for Aspose.HTML Api SDK
 
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
 
 [Tests](./storage/src/test/java/com/aspose/storage/android/) contain various examples of using the Aspose.Storage SDK.
 
-[Docs](./docs/)  Full javadoc for Aspose.Storage Api SDK
+[Docs](./docs/storage/)  Full javadoc for Aspose.Storage Api SDK
 
 
 ## Dependencies

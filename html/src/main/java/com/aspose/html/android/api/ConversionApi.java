@@ -408,4 +408,73 @@ public interface ConversionApi {
             @Query("storage") String storage
     );
 
+    /**
+     * Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
+     *
+     * @param sourceUrl Source page URL. (required)
+     * @return Call&lt;ResponseBody&gt;
+     */
+
+    @GET("html/convert/mhtml")
+    Call<ResponseBody> GetConvertDocumentToMHTMLByUrl(
+            @Query("sourceUrl") String sourceUrl
+    );
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
+     *
+     * @param name Document name. (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder Source document folder. (optional)
+     * @param storage Source document storage. (optional)
+     * @return Call&lt;File&gt;
+     */
+
+    @GET("html/{name}/convert/md")
+    Call<ResponseBody> GetConvertDocumentToMarkdown(
+            @Path("name") String name,
+            @Query("useGit") Boolean useGit,
+            @Query("folder") String folder,
+            @Query("storage") String storage
+    );
+
+
+    /**
+     * Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+     *
+     * @param name Document name. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @param folder The source document folder. (optional)
+     * @param storage The source and resulting document storage. (optional)
+     * @return Call&lt;File&gt;
+     */
+
+    @PUT("html/{name}/convert/md")
+    Call<ResponseBody> PutConvertDocumentToMarkdown(
+            @Path("name") String name,
+            @Query("outPath") String outPath,
+            @Query("useGit") Boolean useGit,
+            @Query("folder") String folder,
+            @Query("storage") String storage
+    );
+
+
+    /**
+     * Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+     *
+     * @param file A file to be converted. (required)
+     * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
+     * @param useGit Use Git Markdown flavor to save. (optional, default to false)
+     * @return Call&lt;File&gt;
+     */
+
+    @Multipart
+    @PUT("html/convert/md")
+    Call<ResponseBody> PutConvertDocumentInRequestToMarkdown(
+            @Part("file\"; filename=\"file\"") RequestBody file,
+            @Query("outPath") String outPath,
+            @Query("useGit") Boolean useGit
+    );
+
 }
