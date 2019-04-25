@@ -165,7 +165,7 @@ class TestConversion {
 All URIs are relative to *https://api.aspose.cloud/v1.1*
 
 
-## ConversionApi
+## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png)
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
