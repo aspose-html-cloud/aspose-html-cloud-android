@@ -1,0 +1,27 @@
+class FilesList {
+    value: [class StorageFile {
+        name: null
+        isFolder: null
+        modifiedDate: null
+        size: null
+        path: null
+    }, class StorageFile {
+        name: null
+        isFolder: null
+        modifiedDate: null
+        size: null
+        path: null
+    }, class StorageFile {
+        name: null
+        isFolder: null
+        modifiedDate: null
+        size: null
+        path: null
+    }, class StorageFile {
+        name: null
+        isFolder: null
+        modifiedDate: null
+        size: null
+        path: null
+    }]
+}

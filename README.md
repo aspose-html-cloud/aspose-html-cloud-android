@@ -8,8 +8,8 @@ The complete source code is available in this repository folder, you can either 
    
 This project includes:   
 - Android dummy application - "/app"
-- Module "html" - this SDK in "/html"
-- Module "storage" - dependency for test in "/storage"
+- Module "html" - this SDK in "/aspose-html-cloud-android"
+- Module "storage" - dependency for test in "/aspose-storage-cloud-android"
 
 ### Prerequisites
 
@@ -34,28 +34,13 @@ gradlew.bat test
 
 ### Sample usage
 
-Before fill all fields in /setting/config.json   
-
-Example:   
-```json
-{
-    "basePath":"https://api.aspose.cloud/v1.1",
-    "authPath":"https://api.aspose.cloud/oauth2/token",
-    "apiKey":"XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
-    "appSID":"XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX",
-    "srcTest": "sourceTest",
-    "dstTest": "destTest",
-    "defaultUserAgent": "Webkit",
-    "debug": true
-}
-```
-
 The examples below show how your application have to initiate and convert url to image using Aspose.HTML Cloud library:
 ```java
 import java.io.*;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
+import com.aspose.storage.android.Configuration;
 import com.aspose.html.android.api.ConversionApi;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -63,11 +48,21 @@ import static org.junit.Assert.fail;
 
 class TestConversion {
 
+	TestConversion{
+        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+        Configuration.setBasePath("https://api.aspose.cloud/v3.0");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+        Configuration.setUserAgent("WebKit");
+        Configuration.setDebug(true);
+        Configuration.setTestSrcDir("sourceTest");
+        Configuration.setTestDstDir("destTest");
+	}
 
 //...
 
     // Helper saver
-    public static boolean saveToDisk(ResponseBody body, String fileName) {
+    public static boolean saveToDisc(ResponseBody body, String fileName) {
 
         File savedFile = new File(Configuration.getTestDstDir() + File.separator + fileName);
 
@@ -106,8 +101,7 @@ class TestConversion {
         Integer rightMargin = 10; // Integer | Right resulting image margin.
         Integer topMargin = 20; // Integer | Top resulting image margin.
         Integer bottomMargin = 20; // Integer | Bottom resulting image margin.
-        Integer xResolution = 300; // Integer | Horizontal resolution of resulting image.
-        Integer yResolution = 300; // Integer | Vertical resolution of resulting image.
+        Integer resolution = 300; // Integer | Resolution of resulting image.
         String folder = "MyFolder"; // String | The source document folder.
         String storage = "MyStorage"; // String | The source document storage.
 
@@ -123,8 +117,7 @@ class TestConversion {
             rightMargin,
             topMargin,
             bottomMargin,
-            xResolution,
-            yResolution,
+            resolution,
             folder,
             storage);
 
@@ -133,7 +126,7 @@ class TestConversion {
         Response<ResponseBody> res = call.execute();
         //Stream
         ResponseBody answer = res.body();
-        boolean result = saveToDisk(answer, fileName);
+        boolean result = saveToDisc(answer, fileName);
         assertTrue(result);
 */
         // Async method
@@ -142,7 +135,7 @@ class TestConversion {
             public void onResponse(Response<ResponseBody> res) {
                 // Get result Repo from response.body()
                 ResponseBody answer = res.body();        
-                boolean result = saveToDisk(answer, fileName);
+                boolean result = saveToDisc(answer, fileName);
                 assertTrue(result);
             }
          
@@ -162,10 +155,10 @@ class TestConversion {
 
 # Documentation for API Endpoints
 
-All URIs are relative to *https://api.aspose.cloud/v1.1*
+All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 
-## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png)
+## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png, gif)
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -175,17 +168,24 @@ Method | HTTP request | Description
 **GetConvertDocumentToPdfByUrl** | **GET** html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
 **GetConvertDocumentToXps** | **GET** html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
 **GetConvertDocumentToXpsByUrl** | **GET** html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-**PutConvertDocumentInRequestToImage** | **PUT** html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-**PutConvertDocumentInRequestToPdf** | **PUT** html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-**PutConvertDocumentInRequestToXps** | **PUT** html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+**PostConvertDocumentInRequestToImage** | **POST** html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+**PostConvertDocumentInRequestToPdf** | **POST** html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+**PostConvertDocumentInRequestToXps** | **POST** html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
 **PutConvertDocumentToImage** | **PUT** html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
 **PutConvertDocumentToPdf** | **PUT** html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
 **PutConvertDocumentToXps** | **PUT** html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
 **GetConvertDocumentToMHTMLByUrl** | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
 content.
 **GetConvertDocumentToMarkdown** | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
-**PutConvertDocumentInRequestToMarkdown** | **PUT** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
+**PostConvertDocumentInRequestToMarkdown** | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
 **PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+
+## ImportApi
+
+**GetConvertMarkdownToHtml** | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
+**PostConvertMarkdownInRequestToHtml** | **POST** /html/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
+**PutConvertMarkdownToHtml** | **PUT** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+
 
 ## DocumentApi
 
@@ -224,18 +224,18 @@ Method | HTTP request | Description
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-*GetMergeHtmlTemplate* | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
-*PutMergeHtmlTemplate* | **PUT** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
+**GetMergeHtmlTemplate** | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
+**PostMergeHtmlTemplate** | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
-[Tests](./html/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
+[Tests](./aspose-html-cloud-android/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
 [Docs](./docs/html/) Full javadoc for Aspose.HTML Api SDK
 
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
 
-[Tests](./storage/src/test/java/com/aspose/storage/android/) contain various examples of using the Aspose.Storage SDK.
+[Tests](./aspose-storage-cloud-android/src/test/java/com/aspose/storage/android/) contain various examples of using the Aspose.Storage SDK.
 
 [Docs](./docs/storage/)  Full javadoc for Aspose.Storage Api SDK
 

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="MainActivity.java">
-*   Copyright (c) 2018 Aspose.HTML for Cloud
+*   Copyright (c) 2019 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -81,8 +81,8 @@ public class MainActivity extends AppCompatActivity {
         mResult = (EditText) findViewById(R.id.result);
         Configuration.setAPI_KEY("60487a72d6325241191177e37ae52146");
         Configuration.setAPP_SID("80e32ca5-a828-46a4-9d54-7199dfd3764a");
-        Configuration.setBasePath("https://api-qa.aspose.cloud/v1.1");
-        Configuration.setAuthPath("https://api-qa.aspose.cloud/oauth2/token");
+        Configuration.setBasePath("https://api-qa.aspose.cloud/v3.0");
+        Configuration.setAuthPath("https://api-qa.aspose.cloud/connect/token");
         Configuration.setUserAgent("WebKit");
         Configuration.setDebug(true);
     }
