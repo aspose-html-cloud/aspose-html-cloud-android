@@ -3,6 +3,7 @@ This repository contains Aspose.HTML Cloud SDK for Android source code. This SDK
 
 See [API Reference](https://apireference.aspose.cloud/html/) for full API specification.
 
+
 ## How to use the SDK?
 The complete source code is available in this repository folder, you can either directly use it in your project.
    
@@ -11,14 +12,13 @@ This project includes:
 - Module "html" - this SDK in "/aspose-html-cloud-android"
 - Module "storage" - dependency for test in "/aspose-storage-cloud-android"
 
-### Prerequisites
 
+### Prerequisites
 To use Aspose HTML for Cloud Android SDK you need to register an account with [Aspose Cloud](https://www.aspose.cloud/) and lookup/create App Key and SID at [Cloud Dashboard](https://dashboard.aspose.cloud/#/apps). There is free quota available. For more details, see [Aspose Cloud Pricing](https://purchase.aspose.cloud/pricing).
 
+
 ### Installation
-
 Building the API client library requires [Gradle Build Tool](https://gradle.org/) to be installed.
-
 
 To build the API client library, simply execute:
 
@@ -31,9 +31,7 @@ To run test from command string:
 gradlew.bat test
 ```
 
-
 ### Sample usage
-
 The examples below show how your application have to initiate and convert url to image using Aspose.HTML Cloud library:
 ```java
 import java.io.*;
@@ -154,12 +152,10 @@ class TestConversion {
 ```
 
 # Documentation for API Endpoints
-
 All URIs are relative to *https://api.aspose.cloud/v3.0*
 
 
 ## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png, gif)
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetConvertDocumentToImage** | **GET** html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
@@ -180,15 +176,16 @@ content.
 **PostConvertDocumentInRequestToMarkdown** | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
 **PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
 
-## ImportApi
 
+## ImportApi
+Method | HTTP request | Description
+------------- | ------------- | -------------
 **GetConvertMarkdownToHtml** | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
 **PostConvertMarkdownInRequestToHtml** | **POST** /html/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
 **PutConvertMarkdownToHtml** | **PUT** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
 
 
 ## DocumentApi
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetDocumentByUrl** | **GET** html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
@@ -199,29 +196,8 @@ Method | HTTP request | Description
 **GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
 **GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
-## OcrApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetRecognizeAndImportToHtml** | **GET** html/{name}/ocr/import | Recognize text from the image file in the storage and import it to HTML format.
-**GetRecognizeAndTranslateToHtml** | **GET** html/{name}/ocr/translate/{srcLang}/{resLang} | Recognize text from the image file in the storage, import it to HTML format and translate to specified language.
-
-## TranslationApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetTranslateDocument** | **GET** html/{name}/translate/{srcLang}/{resLang} | Translate the HTML document specified by the name from default or specified storage. 
-**GetTranslateDocumentByUrl** | **GET** html/translate/{srcLang}/{resLang} | Translate the HTML document from Web specified by its URL.
-
-## SummarizationApi
-
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetDetectHtmlKeywords** | **GET** html/{name}/summ/keywords | Get the HTML document keywords using the keyword detection service.
-**GetDetectHtmlKeywordsByUrl** | **GET** html/summ/keywords | Get the keywords from HTML document from Web specified by its URL using the keyword detection service
 
 ## TemplateMergeApi    
-
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 **GetMergeHtmlTemplate** | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
@@ -231,7 +207,6 @@ Method | HTTP request | Description
 [Tests](./aspose-html-cloud-android/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
 [Docs](./docs/html/) Full javadoc for Aspose.HTML Api SDK
-
 
 Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
 
