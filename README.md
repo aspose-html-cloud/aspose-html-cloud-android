@@ -103,7 +103,7 @@ class TestConversion {
         String folder = "MyFolder"; // String | The source document folder.
         String storage = "MyStorage"; // String | The source document storage.
 
-        String fileName = "convertResult.jpg";
+        String fileName = "convertResult.zip";
         
         try {
         Call<ResponseBody> call = api.GetConvertDocumentToImageByUrl(

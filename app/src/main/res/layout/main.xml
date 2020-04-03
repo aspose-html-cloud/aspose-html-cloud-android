@@ -13,15 +13,6 @@
             android:layout_marginStart="10dip"
             android:onClick="clickLinks"
             android:text="@string/links"/>
-    <Button
-            android:id="@+id/keywords"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dip"
-            android:onClick="clickKeywords"
-            android:text="@string/keywords"
-            android:layout_row="0"
-            android:layout_column="2" />
 
     <TextView
         android:id="@+id/textView2"

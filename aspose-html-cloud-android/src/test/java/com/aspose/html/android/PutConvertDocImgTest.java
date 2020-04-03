@@ -127,7 +127,7 @@ public class PutConvertDocImgTest extends BaseTest {
 			fileName += "B--";
 		}
 		
-		this.localName = fileName + "." + outFormat;
+		this.localName = fileName + "." + outFormat + ".zip";
     }
 
     @Before

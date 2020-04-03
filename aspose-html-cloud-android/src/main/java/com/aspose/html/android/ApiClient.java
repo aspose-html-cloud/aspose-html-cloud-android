@@ -149,22 +149,22 @@ public class ApiClient {
     }
 
     public ApiClient setDateFormat(DateFormat dateFormat) {
-        this.json.setDateFormat(dateFormat);
+        json.setDateFormat(dateFormat);
         return this;
     }
 
     public ApiClient setSqlDateFormat(DateFormat dateFormat) {
-        this.json.setSqlDateFormat(dateFormat);
+        json.setSqlDateFormat(dateFormat);
         return this;
     }
 
     public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
-        this.json.setOffsetDateTimeFormat(dateFormat);
+        json.setOffsetDateTimeFormat(dateFormat);
         return this;
     }
 
     public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
-        this.json.setLocalDateFormat(dateFormat);
+        json.setLocalDateFormat(dateFormat);
         return this;
     }
 

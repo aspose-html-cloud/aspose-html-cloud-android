@@ -69,12 +69,6 @@ public class ApiClient {
         if (!baseUrl.endsWith("/"))
             baseUrl = baseUrl + "/";
 
-        //Debug
-        if (Configuration.getDebug()){
-            HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
-            okBuilder.addInterceptor(logging);
-        }
-
         //Auth token
         okBuilder.addInterceptor(new Interceptor() {
             @Override
@@ -102,6 +96,12 @@ public class ApiClient {
                 return chain.proceed(request);
             }
         });
+
+        //Debug
+        if (Configuration.getDebug()){
+            HttpLoggingInterceptor logging = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
+            okBuilder.addInterceptor(logging);
+        }
 
         adapterBuilder = new Retrofit
                 .Builder()
@@ -148,22 +148,22 @@ public class ApiClient {
     }
 
     public ApiClient setDateFormat(DateFormat dateFormat) {
-        this.json.setDateFormat(dateFormat);
+        json.setDateFormat(dateFormat);
         return this;
     }
 
     public ApiClient setSqlDateFormat(DateFormat dateFormat) {
-        this.json.setSqlDateFormat(dateFormat);
+        json.setSqlDateFormat(dateFormat);
         return this;
     }
 
     public ApiClient setOffsetDateTimeFormat(DateTimeFormatter dateFormat) {
-        this.json.setOffsetDateTimeFormat(dateFormat);
+        json.setOffsetDateTimeFormat(dateFormat);
         return this;
     }
 
     public ApiClient setLocalDateFormat(DateTimeFormatter dateFormat) {
-        this.json.setLocalDateFormat(dateFormat);
+        json.setLocalDateFormat(dateFormat);
         return this;
     }
 

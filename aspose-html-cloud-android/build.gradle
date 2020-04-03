@@ -1,11 +1,11 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 29
+    buildToolsVersion '29.0.3'
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         buildConfigField "long", "TIMEOUT ", "${1000 * 60 * 30}" // 30 minutes
     }
     compileOptions {
@@ -33,11 +33,11 @@ afterEvaluate {
     android.libraryVariants.all { variant ->
         def task = project.tasks.create "jar${variant.name.capitalize()}", Jar
         task.description = "Create jar artifact for ${variant.name}"
-        task.dependsOn variant.javaCompile
-        task.from variant.javaCompile.destinationDir
+        task.dependsOn variant.javaCompileProvider.get()
+        task.from variant.javaCompileProvider.get().destinationDir
         task.destinationDir = project.file("${project.buildDir}/outputs/jar")
         task.archiveName = "${project.name}-${variant.baseName}-${version}.jar"
-        artifacts.add('archives', task);
+        artifacts.add('archives', task)
     }
 }
 

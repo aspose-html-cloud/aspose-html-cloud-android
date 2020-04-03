@@ -126,7 +126,7 @@ public class HtmlToImageTest extends BaseTest {
             savedName += "B---";
         }
 
-        this.localName = savedName + "." + outFormat;
+        this.localName = savedName + "." + outFormat + ".zip";
     }
 
     @Before

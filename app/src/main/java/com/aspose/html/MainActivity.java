@@ -39,7 +39,6 @@ import android.widget.Toast;
 import com.aspose.html.android.ApiClient;
 import com.aspose.html.android.Configuration;
 import com.aspose.html.android.api.DocumentApi;
-import com.aspose.html.android.api.SummarizationApi;
 
 import java.io.IOException;
 
@@ -52,33 +51,26 @@ public class MainActivity extends AppCompatActivity {
     EditText mUrl;
     EditText mResult;
     DocumentApi docApi;
-    SummarizationApi sumApi;
 
     /* Checks if external storage is available for read and write */
     public boolean isExternalStorageWritable() {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(state);
     }
 
     /* Checks if external storage is available to at least read */
     public boolean isExternalStorageReadable() {
         String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state) ||
-                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state)) {
-            return true;
-        }
-        return false;
+        return Environment.MEDIA_MOUNTED.equals(state) ||
+                Environment.MEDIA_MOUNTED_READ_ONLY.equals(state);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        mUrl = (EditText) findViewById(R.id.address);
-        mResult = (EditText) findViewById(R.id.result);
+        mUrl = findViewById(R.id.address);
+        mResult = findViewById(R.id.result);
         Configuration.setAPI_KEY("60487a72d6325241191177e37ae52146");
         Configuration.setAPP_SID("80e32ca5-a828-46a4-9d54-7199dfd3764a");
         Configuration.setBasePath("https://api-qa.aspose.cloud/v3.0");
@@ -106,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 return result;
-            };
+            }
 
             @Override
             protected void onPostExecute(String result) {
@@ -116,34 +108,5 @@ public class MainActivity extends AppCompatActivity {
         };
         task.execute(textUrl);
         Toast.makeText(this, "Get all links from url " + textUrl, Toast.LENGTH_LONG).show();
-    }
-
-    public void clickKeywords(View view) {
-
-        String textUrl = mUrl.getText().toString().trim();
-
-        @SuppressLint("StaticFieldLeak") AsyncTask<String, Void, String> task = new AsyncTask<String, Void, String>() {
-
-            @Override
-            protected String doInBackground(String... urls) {
-                sumApi = new ApiClient().createService(SummarizationApi.class);
-                Call<ResponseBody> call = sumApi.GetDetectHtmlKeywordsByUrl(urls[0]);
-                String result = null;
-                try {
-                    result = call.execute().body().string();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                return result;
-            };
-
-            @Override
-            protected void onPostExecute(String result) {
-                super.onPostExecute(result);
-                mResult.setText(result);
-            }
-        };
-        task.execute(textUrl);
-        Toast.makeText(this, "Get keywords from url " + textUrl, Toast.LENGTH_LONG).show();
     }
 }
