@@ -37,7 +37,7 @@ public interface DocumentApi {
      * Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
      *
      * @param sourceUrl Source page URL. (required)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/download")
@@ -53,7 +53,7 @@ public interface DocumentApi {
      * @param xPath     XPath query string. (required)
      * @param storage   The document storage. (optional)
      * @param folder    The document folder. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/fragments/{outFormat}")
@@ -71,7 +71,7 @@ public interface DocumentApi {
      * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param xPath XPath query string. (required)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/fragments/{outFormat}")
@@ -89,7 +89,7 @@ public interface DocumentApi {
      * @param selector CSS selector string. (required)
      * @param folder The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/fragments/css/{outFormat}")
@@ -107,7 +107,7 @@ public interface DocumentApi {
      * @param outFormat Output format. Possible values: 'plain' and 'json'. (required)
      * @param sourceUrl Source page URL. (required)
      * @param selector CSS selector string. (required)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/fragments/css/{outFormat}")
@@ -123,7 +123,7 @@ public interface DocumentApi {
      * @param name    The document name (required). Presented as zip archive with one html file in the root.
      * @param folder  The document folder. (optional)
      * @param storage The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/images/all")
@@ -137,7 +137,7 @@ public interface DocumentApi {
      * Return all HTML page images packaged as a ZIP archive by the source page URL.
      *
      * @param sourceUrl Source page URL. (required)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/images/all")

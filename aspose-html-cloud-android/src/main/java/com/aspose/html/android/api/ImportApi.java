@@ -45,9 +45,8 @@ public interface ImportApi {
      * @param name Document name. (required)
      * @param folder Source document folder. (optional)
      * @param storage Source document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
-
     @GET("html/{name}/import/md")
     Call<ResponseBody> GetConvertMarkdownToHtml(
             @Path("name") String name,
@@ -62,9 +61,8 @@ public interface ImportApi {
      * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.html) (required)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
-
     @PUT("html/{name}/import/md")
     Call<ResponseBody> PutConvertMarkdownToHtml(
             @Path("name") String name,
@@ -79,9 +77,8 @@ public interface ImportApi {
      * @param file A file to be converted. (required)
      * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.html) (required)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
-
     @Multipart
     @POST("html/import/md")
     Call<ResponseBody> PostConvertMarkdownInRequestToHtml(
@@ -89,4 +86,5 @@ public interface ImportApi {
             @Query("outPath") String outPath,
             @Query("storage") String storage
     );
+
 }

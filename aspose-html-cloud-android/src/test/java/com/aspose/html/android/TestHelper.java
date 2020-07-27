@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="TestHelper.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,27 +24,25 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
-import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.FilesUploadResult;
-
+import com.aspose.html.android.api.StorageApi;
+import com.aspose.html.android.model.FilesUploadResult;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.Response;
-
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 import static org.junit.Assert.assertTrue;
 
 public class TestHelper {
 
-    private static StorageApi storageApi = new ApiClient().createService(StorageApi.class);;
+    private final static StorageApi storageApi = new ApiClient().createService(StorageApi.class);
 
     public static void checkAndSave(Call<ResponseBody> call, String fileName) throws IOException {
 
@@ -56,6 +54,16 @@ public class TestHelper {
         //Save to test directory
         boolean result = TestHelper.saveToDisc(answer, fileName);
         assertTrue(result);
+    }
+
+    public static boolean saveToDisc(String data, String fileName) {
+        try {
+            Files.write(Paths.get(Configuration.getTestDstDir()+ "/" + fileName), data.getBytes());
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 
     public static boolean saveToDisc(ResponseBody body, String fileName) {
@@ -102,11 +110,8 @@ public class TestHelper {
 
         // Post document to storage
         Call<FilesUploadResult> call = storageApi.uploadFile(uploadFolder + File.separator + fileName, fileToUpload, null);
-
         Response<FilesUploadResult> res = call.execute();
-
         assertTrue(res.isSuccessful());
-
-        return true;
+        return res.isSuccessful();
     }
 }

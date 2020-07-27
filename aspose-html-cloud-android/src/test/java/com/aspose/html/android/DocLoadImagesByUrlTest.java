@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadImagesByUrlTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.DocumentApi;
@@ -35,19 +33,16 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import retrofit2.Call;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class DocLoadImagesByUrlTest  extends BaseTest{
-    private String sourceUrl;
-    private String localName;
+    private final String sourceUrl;
+    private final String localName;
     private DocumentApi api;
-
 
     public DocLoadImagesByUrlTest(Integer numTest, String sourceUrl) {
         super();
@@ -73,11 +68,8 @@ public class DocLoadImagesByUrlTest  extends BaseTest{
     public void test() {
         out.println("Test doc load images by url");
         try {
-
             Call<ResponseBody> call = api.GetDocumentImagesByUrl(sourceUrl);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

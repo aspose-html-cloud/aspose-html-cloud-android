@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocImgTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,46 +24,40 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import java.util.Arrays;
 import java.util.Collection;
 import static org.junit.Assert.*;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class PutConvertDocImgTest extends BaseTest {
-
-    private String name;
-    private String outFormat;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-    private String versionId;
-    private String localName;
+    private final String name;
+    private final String outFormat;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final Integer resolution;
+    private final String folder;
+    private final String storage;
+    private final String versionId;
+    private final String localName;
     private ConversionApi api;
     private StorageApi storageApi;
 
-	private static String localFolder = Configuration.getTestDstDir();
-
-	   //Constructor that takes test data.
+	//Constructor that takes test data.
     public PutConvertDocImgTest(
         String outFormat,
         Integer width,
@@ -126,7 +120,6 @@ public class PutConvertDocImgTest extends BaseTest {
 		}else {
 			fileName += "B--";
 		}
-		
 		this.localName = fileName + "." + outFormat + ".zip";
     }
 
@@ -182,7 +175,6 @@ public class PutConvertDocImgTest extends BaseTest {
     	});
     }
 
-    
     @Test
     public void test() {
     
@@ -198,11 +190,9 @@ public class PutConvertDocImgTest extends BaseTest {
     		
     		//Save to test directory
             TestHelper.checkAndSave(call, localName);
-    		
         }catch(Exception e) {
         	e.printStackTrace();
         	fail();
         }
     }
-    
 }

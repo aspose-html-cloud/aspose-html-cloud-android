@@ -1,1 +1,1 @@
-include ':app', ':aspose-html-cloud-android', ':aspose-storage-cloud-android'
+include ':app', ':aspose-html-cloud-android'

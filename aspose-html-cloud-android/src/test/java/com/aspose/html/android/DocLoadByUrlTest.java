@@ -46,8 +46,8 @@ import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class DocLoadByUrlTest extends BaseTest{
-    private String sourceUrl;
-    private String localName;
+    private final String sourceUrl;
+    private final String localName;
     private DocumentApi api;
 
 
@@ -75,11 +75,8 @@ public class DocLoadByUrlTest extends BaseTest{
     public void test() {
         out.println("Test doc load site by url");
         try {
-
             Call<ResponseBody> call = api.GetDocumentByUrl(sourceUrl);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

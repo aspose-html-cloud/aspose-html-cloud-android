@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SvgToImageTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,8 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ConversionApi;
@@ -42,20 +40,18 @@ import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class SvgToImageTest extends BaseTest {
-
-    private String name;
-    private String outFormat;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-
-    private String localName;
+    private final String name;
+    private final String outFormat;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final Integer resolution;
+    private final String folder;
+    private final String storage;
+    private final String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
@@ -119,7 +115,6 @@ public class SvgToImageTest extends BaseTest {
         } else {
             savedName += "B---";
         }
-
         this.localName = savedName + "." + outFormat;
     }
 
@@ -180,11 +175,9 @@ public class SvgToImageTest extends BaseTest {
         try {
 
             TestHelper.uploadFile(name, folder);
-
             Call<ResponseBody> call = api.GetConvertDocumentToImage( name, outFormat, width, height, leftMargin,
                     rightMargin, topMargin, bottomMargin, resolution, folder, storage);
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

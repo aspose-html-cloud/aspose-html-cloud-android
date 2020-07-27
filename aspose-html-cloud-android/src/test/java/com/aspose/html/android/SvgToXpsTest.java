@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="SvgToXpsTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,43 +24,33 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ConversionApi;
-import com.aspose.storage.android.api.StorageApi;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class SvgToXpsTest extends BaseTest {
-    private String name;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-
-    private String localName;
+    private final String name;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String folder;
+    private final String storage;
+    private final String localName;
     private ConversionApi api;
-    private StorageApi storageApi;
-
-    private static String localFolder = Configuration.getTestDstDir();
 
     //Constructor that takes test data.
     public SvgToXpsTest(
@@ -113,14 +103,12 @@ public class SvgToXpsTest extends BaseTest {
         } else {
             savedName += "B---";
         }
-
         this.localName = savedName + ".xps";
     }
 
     @Before
     public void initialize() {
         api = new ApiClient().createService(ConversionApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
     }
 
     @Parameterized.Parameters
@@ -165,7 +153,6 @@ public class SvgToXpsTest extends BaseTest {
     public void test() {
         out.println("Test svg to xps ");
         try {
-
             TestHelper.uploadFile(name,folder);
             Call<ResponseBody> call = api.GetConvertDocumentToXps(name, width, height, leftMargin, rightMargin,
                     topMargin, bottomMargin, folder, storage);

@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UrlToImagelTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,15 +24,10 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import static java.lang.System.out;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.ResponseBody;
 import org.junit.Before;
@@ -40,27 +35,20 @@ import org.junit.Test;
 import org.junit.runners.Parameterized;
 import org.junit.runner.RunWith;
 import retrofit2.Call;
-
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 
 @RunWith(Parameterized.class)
 public class UrlToImagelTest extends BaseTest {
-
-    private String sourceUrl;
-    private String outFormat;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-
-    private String localName;
+    private final String sourceUrl;
+    private final String outFormat;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final Integer resolution;
+    private final String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
@@ -98,7 +86,6 @@ public class UrlToImagelTest extends BaseTest {
         } else {
             savedName += "---_";
         }
-
         this.localName = savedName + "." + outFormat + ".zip";
     }
 
@@ -155,8 +142,6 @@ public class UrlToImagelTest extends BaseTest {
 
     @Test
     public void test() {
-        out.println("Test image " + outFormat);
-
         try {
             Call<ResponseBody> call = api.GetConvertDocumentToImageByUrl(
 					outFormat,
@@ -167,12 +152,9 @@ public class UrlToImagelTest extends BaseTest {
 					rightMargin,
 					topMargin,
 					bottomMargin,
-					resolution,
-					folder,
-					storage);
+					resolution);
 
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

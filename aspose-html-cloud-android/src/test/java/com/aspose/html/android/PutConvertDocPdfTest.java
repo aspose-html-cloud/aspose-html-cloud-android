@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocPdfTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -35,31 +35,26 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class PutConvertDocPdfTest extends BaseTest {
-
-    private static String  name = "test1.html";
-    private static String folder = "HtmlTestDoc";
-    private static String storage = null;
-    private static String localFolder = Configuration.getTestDstDir();
-
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String localName;
-    private String versionId = null;
+    private final static String  name = "test1.html";
+    private final static String folder = "HtmlTestDoc";
+    private final static String storage = null;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String localName;
+    private final String versionId = null;
     private static ConversionApi api;
     private static StorageApi storageApi;
-
     private static boolean alreadyInit = false;
-
 
    //Constructor that takes test data.
     public PutConvertDocPdfTest(
@@ -110,8 +105,7 @@ public class PutConvertDocPdfTest extends BaseTest {
 		}else {
 			fileName += "B--";
 		}
-		
-		this.localName = fileName + ".pdf"; 
+		this.localName = fileName + ".pdf";
     }
     
     @Before

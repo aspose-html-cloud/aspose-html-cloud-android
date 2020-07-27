@@ -24,43 +24,35 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ConversionApi;
-import com.aspose.storage.android.api.StorageApi;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class EpubToImageTest extends BaseTest {
 
-    private String name;
-    private String outFormat;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-
-    private String localName;
+    private final String name;
+    private final String outFormat;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final Integer resolution;
+    private final String folder;
+    private final String storage;
+    private final String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
@@ -183,12 +175,9 @@ public class EpubToImageTest extends BaseTest {
     public void test() {
         out.println("Test epub to image " + outFormat);
         try {
-
             TestHelper.uploadFile(name, folder);
-
             Call<ResponseBody> call = api.GetConvertDocumentToImage( name, outFormat, width, height, leftMargin,
                     rightMargin, topMargin, bottomMargin, resolution, folder, storage);
-
             TestHelper.checkAndSave(call, localName);
 
         } catch (Exception e) {

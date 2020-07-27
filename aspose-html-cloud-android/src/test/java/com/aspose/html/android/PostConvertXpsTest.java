@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostConvertXpsTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,7 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import static java.lang.System.out;
@@ -32,7 +31,6 @@ import static java.lang.System.out;
 import java.util.Arrays;
 import java.util.Collection;
 import java.io.File;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -43,28 +41,26 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import static org.junit.Assert.*;
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class PostConvertXpsTest extends BaseTest {
-    private String name;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-    private String localName;
-    private String versionId;
+    private final String name;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String folder;
+    private final String storage;
+    private final String localName;
+    private final String versionId;
     private ConversionApi api;
     private StorageApi storageApi;
-    
-	private static String localFolder = Configuration.getTestDstDir();
-    
+
    //Constructor that takes test data.
     public PostConvertXpsTest(
         Integer width,
@@ -118,8 +114,7 @@ public class PostConvertXpsTest extends BaseTest {
 		}else {
 			fileName += "B--";
 		}
-		
-		this.localName = fileName + ".xps"; 
+		this.localName = fileName + ".xps";
     }
     
     @Before
@@ -168,7 +163,6 @@ public class PostConvertXpsTest extends BaseTest {
     
     @Test
     public void test() {
-
 		File f = new File(Configuration.getTestSrcDir(), name);
 		if(!f.exists()){
 			out.println("file not found");
@@ -178,7 +172,6 @@ public class PostConvertXpsTest extends BaseTest {
 		MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
 		try {
-
             Call<ResponseBody>  call = api.PostConvertDocumentInRequestToXps(folder + "/" + localName, file, width, height, leftMargin, rightMargin, topMargin, bottomMargin);
     		Response<ResponseBody> res = call.execute();
             assertTrue(res.isSuccessful());

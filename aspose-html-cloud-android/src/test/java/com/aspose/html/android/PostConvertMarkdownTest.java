@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostConvertMarkdownTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,25 +24,20 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import static java.lang.System.out;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import com.aspose.html.android.api.ConversionApi;
-import com.aspose.storage.android.api.StorageApi;
-
+import com.aspose.html.android.api.StorageApi;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -53,16 +48,14 @@ import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class PostConvertMarkdownTest extends BaseTest{
-    private Boolean useGit;
-    private String localName;
-    private String folder;
-    private String storage;
-    private String versionId;
-    
+    private final Boolean useGit;
+    private final String localName;
+    private final String folder;
+    private final String storage;
+    private final String versionId;
     private ConversionApi api;
     private StorageApi storageApi;
 
-    
    //Constructor that takes test data.
     public PostConvertMarkdownTest(Boolean useGit)
     {
@@ -70,7 +63,6 @@ public class PostConvertMarkdownTest extends BaseTest{
 		this.folder         =	"HtmlTestDoc";
 		this.storage		=   null;
 		this.versionId      =   null;
-		
 
 		String fileName = "PostConvertToMarkdownInResult_";
 		if(useGit) {

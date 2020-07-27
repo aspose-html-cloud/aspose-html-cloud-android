@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="HtmlToPdfTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,37 +29,29 @@ package com.aspose.html.android;
 
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.storage.android.api.StorageApi;
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
 public class HtmlToPdfTest extends BaseTest {
-    private String name;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-
-    private String localName;
-
+    private final String name;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String folder;
+    private final String storage;
+    private final String localName;
     private ConversionApi api;
-    private StorageApi storageApi;
-
 
     //Constructor that takes test data.
     public HtmlToPdfTest(
@@ -119,7 +111,6 @@ public class HtmlToPdfTest extends BaseTest {
     @Before
     public void initialize() {
         api = new ApiClient().createService(ConversionApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
     }
 
     @Parameterized.Parameters
@@ -165,14 +156,10 @@ public class HtmlToPdfTest extends BaseTest {
         out.println("Test html to pdf ");
 
         try {
-
             TestHelper.uploadFile(name,folder);
-
             Call<ResponseBody> call = api.GetConvertDocumentToPdf( name, width, height, leftMargin, rightMargin,
                     topMargin, bottomMargin, folder, storage);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

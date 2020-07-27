@@ -10,7 +10,6 @@ The complete source code is available in this repository folder, you can either 
 This project includes:   
 - Android dummy application - "/app"
 - Module "html" - this SDK in "/aspose-html-cloud-android"
-- Module "storage" - dependency for test in "/aspose-storage-cloud-android"
 
 
 ### Prerequisites
@@ -18,12 +17,41 @@ To use Aspose HTML for Cloud Android SDK you need to register an account with [A
 
 
 ### Installation
+
+Get ready package or build from source.
+
+#### Maven users
+Add this dependency to your project's POM:
+
+```xml
+<repositories>
+    ...
+	<repository>
+		<id>AsposeJavaAPI</id>
+		<name>Aspose Java API</name>
+		<url>https://repository.aspose.cloud/repo/</url>
+	</repository>
+	...
+</repositories>
+
+<dependencies>
+     ...
+	<dependency>
+		<groupId>com.aspose</groupId>
+		<artifactId>aspose-html-cloud-android</artifactId>
+		<version>20.7.0</version>
+		<scope>compile</scope>
+	</dependency>
+	...
+</dependencies>
+```
+
 Building the API client library requires [Gradle Build Tool](https://gradle.org/) to be installed.
 
 To build the API client library, simply execute:
 
 ```shell
-gradlew.bat
+gradlew.bat build -x test //skip tests
 ```
 
 To run test from command string:
@@ -34,41 +62,37 @@ gradlew.bat test
 ### Sample usage
 The examples below show how your application have to initiate and convert url to image using Aspose.HTML Cloud library:
 ```java
-import java.io.*;
+package com.aspose.test_package;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import com.aspose.html.ApiClient;
+import com.aspose.html.Configuration;
+import com.aspose.html.api.ConversionApi;
+import com.aspose.html.api.StorageApi;
+import com.aspose.html.model.FilesUploadResult;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
-import com.aspose.storage.android.Configuration;
-import com.aspose.html.android.api.ConversionApi;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
-
-class TestConversion {
-
-	TestConversion{
-        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
-        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
-        Configuration.setBasePath("https://api.aspose.cloud/v3.0");
-        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
-        Configuration.setUserAgent("WebKit");
-        Configuration.setDebug(true);
-        Configuration.setTestSrcDir("sourceTest");
-        Configuration.setTestDstDir("destTest");
-	}
-
-//...
-
-    // Helper saver
-    public static boolean saveToDisc(ResponseBody body, String fileName) {
+public class App {
+    
+    // Helper method save the response body to the destination directory
+    public static long saveToDisc(ResponseBody body, String fileName) {
 
         File savedFile = new File(Configuration.getTestDstDir() + File.separator + fileName);
-
+        long fileSizeDownloaded = 0;
+        
         try (InputStream inputStream = body.byteStream();
              OutputStream outputStream = new FileOutputStream(savedFile))
         {
             byte[] fileReader = new byte[4096];
-            long fileSizeDownloaded = 0;
 
             while (true) {
                 int read = inputStream.read(fileReader);
@@ -78,76 +102,80 @@ class TestConversion {
                 fileSizeDownloaded += read;
             }
             outputStream.flush();
-            return true;
-
         } catch (Exception e) {
             e.printStackTrace();
-            return false;
         }
+        return fileSizeDownloaded;
     }
 
+    public static void main(String[] args) {
 
-    public void Convert(){
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
 
-        ConversionApi api = new ApiClient().createService(ConversionApi.class);
-    
-        String sourceUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
-        String outFormat = "png"; // String | Resulting image format.
-        Integer width = 800; // Integer | Resulting image width. 
-        Integer height = 600; // Integer | Resulting image height. 
-        Integer leftMargin = 10; // Integer | Left resulting image margin.
-        Integer rightMargin = 10; // Integer | Right resulting image margin.
-        Integer topMargin = 20; // Integer | Top resulting image margin.
-        Integer bottomMargin = 20; // Integer | Bottom resulting image margin.
-        Integer resolution = 300; // Integer | Resolution of resulting image.
-        String folder = "MyFolder"; // String | The source document folder.
-        String storage = "MyStorage"; // String | The source document storage.
+        Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+        Configuration.setAPP_SID("XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+        Configuration.setBasePath("https://api.aspose.cloud/v3.0");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+        Configuration.setUserAgent("WebKit");
+        Configuration.setDebug(true);
+        Configuration.setTestSrcDir("testdata");
+        Configuration.setTestDstDir("testresult");
 
-        String fileName = "convertResult.zip";
+        String name = "test.html";// Document name. Place the html document in the folder "testdata".
+        String outFormat = "jpg"; // Convert to jpg
+        Integer width = 800; // Resulting image width. 
+        Integer height = 1000; // Resulting image height. 
+        Integer leftMargin = 10; // Left resulting image margin.
+        Integer rightMargin = 10; // Right resulting image margin.
+        Integer topMargin = 10; // Top resulting image margin.
+        Integer bottomMargin = 10; // Bottom resulting image margin.
+        Integer resolution = 300; // Resolution of resulting image.
+        String folder = "/"; // The folder in the storage. Should exist.
+        String storage = null; // Name of the storage. null
         
+        // Creating API for need operations
+        ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
+        StorageApi storageApi = new ApiClient().createService(StorageApi.class);
+        
+
         try {
-        Call<ResponseBody> call = api.GetConvertDocumentToImageByUrl(
-            outFormat,
-            sourceUrl,
-            width,
-            height,
-            leftMargin,
-            rightMargin,
-            topMargin,
-            bottomMargin,
-            resolution,
-            folder,
-            storage);
+            
+            // Upload file to storage
+            // Test file in the "/testdata" folder in the root of the project
+            File f = new File(Configuration.getTestSrcDir(), name);
 
-/*
-        // Sync request, don't use in main thread to avoid lock GUI
-        Response<ResponseBody> res = call.execute();
-        //Stream
-        ResponseBody answer = res.body();
-        boolean result = saveToDisc(answer, fileName);
-        assertTrue(result);
-*/
-        // Async method
-        call.enqueue(new Callback<ResponseBody>() {
-            @Override
-            public void onResponse(Response<ResponseBody> res) {
-                // Get result Repo from response.body()
-                ResponseBody answer = res.body();        
-                boolean result = saveToDisc(answer, fileName);
-                assertTrue(result);
+            if(!f.exists()) {
+                System.out.println("file not found");
+                throw new RuntimeException("Test file not found");
             }
-         
-            @Override
-            public void onFailure(Throwable t) {
-                fail();         
+            
+            RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
+            MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
+
+            // Upload document to storage
+            Call<FilesUploadResult> callUpload = storageApi.uploadFile(folder + File.separator + name, fileToUpload, null);
+            Response<FilesUploadResult> res = callUpload.execute();
+            System.out.println("Executed is successful = " + res.isSuccessful());  
+                        
+            // Prepare call execute
+            Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
+     
+            // Execute request
+            Response<ResponseBody> img = call.execute();
+             
+            // Get body from response
+            ResponseBody answer = img.body();
+            
+            // Save to test directory
+            long result = saveToDisc(answer, "test.zip");
+            System.out.println("Result size = " + result);
+                
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+     }
 }
 ```
 
@@ -158,18 +186,18 @@ All URIs are relative to *https://api.aspose.cloud/v3.0*
 ## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png, gif)
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-**GetConvertDocumentToImage** | **GET** html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-**GetConvertDocumentToImageByUrl** | **GET** html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-**GetConvertDocumentToPdf** | **GET** html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-**GetConvertDocumentToPdfByUrl** | **GET** html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-**GetConvertDocumentToXps** | **GET** html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-**GetConvertDocumentToXpsByUrl** | **GET** html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-**PostConvertDocumentInRequestToImage** | **POST** html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-**PostConvertDocumentInRequestToPdf** | **POST** html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-**PostConvertDocumentInRequestToXps** | **POST** html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
-**PutConvertDocumentToImage** | **PUT** html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
-**PutConvertDocumentToPdf** | **PUT** html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
-**PutConvertDocumentToXps** | **PUT** html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
+**GetConvertDocumentToImage** | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
+**GetConvertDocumentToImageByUrl** | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
+**GetConvertDocumentToPdf** | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
+**GetConvertDocumentToPdfByUrl** | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
+**GetConvertDocumentToXps** | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
+**GetConvertDocumentToXpsByUrl** | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
+**PostConvertDocumentInRequestToImage** | **POST** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
+**PostConvertDocumentInRequestToPdf** | **POST** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
+**PostConvertDocumentInRequestToXps** | **POST** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
+**PutConvertDocumentToImage** | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
+**PutConvertDocumentToPdf** | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
+**PutConvertDocumentToXps** | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
 **GetConvertDocumentToMHTMLByUrl** | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
 content.
 **GetConvertDocumentToMarkdown** | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
@@ -188,13 +216,13 @@ Method | HTTP request | Description
 ## DocumentApi
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-**GetDocumentByUrl** | **GET** html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
-**GetDocumentFragmentByXPath** | **GET** html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
-**GetDocumentFragmentByXPathByUrl** | **GET** html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
+**GetDocumentByUrl** | **GET** /html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
+**GetDocumentFragmentByXPath** | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
+**GetDocumentFragmentByXPathByUrl** | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
 **GetDocumentFragmentsByCSSSelector** | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
 **GetDocumentFragmentsByCSSSelectorByUrl** | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
-**GetDocumentImages** | **GET** html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-**GetDocumentImagesByUrl** | **GET** html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
+**GetDocumentImages** | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
+**GetDocumentImagesByUrl** | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
 
 
 ## TemplateMergeApi    
@@ -204,15 +232,32 @@ Method | HTTP request | Description
 **PostMergeHtmlTemplate** | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
 
 
+## SeoApi    
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**GetSeoWarning** | **GET** /html/seo | Page analysis and return of SEO warnings.
+**GetHtmlWarning** | **GET** /html/validator | Checks the markup validity of Web documents in HTML, XHTML, etc.
+
+
+## StorageApi
+Method | HTTP request | Description
+------------- | ------------- | -------------
+**downloadFile** | **GET** /html/storage/file/{path} | Download file from storage.
+**uploadFile** | **PUT** /html/storage/file/{path} | Upload file to storage.
+**moveFile** | **PUT** /html/storage/file/move/{srcPath} | Move file in storage.
+**deleteFile** | **DELETE** /html/storage/file/{path} | Delete file in the storage.
+**createFolder** | **PUT** /html/storage/folder/{path} | Create the folder in the storage.
+**moveFolder** | **PUT** /html/storage/folder/move/{srcPath} | Move folder in the storage.
+**deleteFolder** | **DELETE** /html/storage/folder/{path} | Delete folder in the storage.
+**getFilesList** | **GET** /html/storage/folder/{path} | Get all files and folders within a folder.
+**getDiscUsage** | **GET** /html/storage/disc | Get disc usage in the storage.
+**objectExists** | **GET** /html/storage/exist/{path} | Check if file or folder exists.
+**storageExists** | **GET** /html/storage/{storageName}/exist | Check if storage exists.
+**getFileVersions** | **GET** /html/storage/version/{path} | Get file versions in the storage.
+
 [Tests](./aspose-html-cloud-android/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
-[Docs](./docs/html/) Full javadoc for Aspose.HTML Api SDK
-
-Aspose HTML includes Aspose.Storage.Cloud to manipulate files on a remote server. This is used in tests for download test files to the server.
-
-[Tests](./aspose-storage-cloud-android/src/test/java/com/aspose/storage/android/) contain various examples of using the Aspose.Storage SDK.
-
-[Docs](./docs/storage/)  Full javadoc for Aspose.Storage Api SDK
+[Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
 
 
 ## Dependencies

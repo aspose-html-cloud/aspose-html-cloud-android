@@ -24,40 +24,30 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
-import static java.lang.System.out;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-
-import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.*;
+import com.aspose.html.android.api.StorageApi;
+import com.aspose.html.android.model.*;
 import com.aspose.html.android.api.ConversionApi;
-
-import okhttp3.MediaType;
-import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class GetHtmlToMarkdownTest extends BaseTest{
-    private String  name;
-    private Boolean useGit;
-    private String folder;
-    private String storage;
-    private String resultName;
+    private final String  name;
+    private final Boolean useGit;
+    private final String folder;
+    private final String storage;
+    private final String resultName;
     private ConversionApi api;
     private StorageApi storageApi;
 
@@ -96,16 +86,13 @@ public class GetHtmlToMarkdownTest extends BaseTest{
     public void test() {
 
     	try {
-
 			TestHelper.uploadFile(name, folder);
-
 			Call<ObjectExist> call = storageApi.objectExists(folder + "/" + name,	null, null);
-
 			Response<ObjectExist> res = call.execute();
 			assertTrue(res.isSuccessful());
 
 			Call<ResponseBody> call_resp = api.GetConvertDocumentToMarkdown( name, useGit, folder, storage);
-     		
+
     		//Save to test directory
 			TestHelper.checkAndSave(call_resp, resultName);
  
@@ -114,7 +101,6 @@ public class GetHtmlToMarkdownTest extends BaseTest{
 
 			Response<Void> res2 = call_response.execute();
 			assertTrue(res2.isSuccessful());
-
         }catch(Exception e) {
         	e.printStackTrace();
             fail();

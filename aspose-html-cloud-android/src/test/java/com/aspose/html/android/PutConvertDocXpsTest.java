@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutConvertDocXpsTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,18 +24,14 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import static java.lang.System.out;
 import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.io.File;
-
 import com.aspose.html.android.api.ConversionApi;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
@@ -44,30 +40,27 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
-import retrofit2.http.Part;
+
 
 @RunWith(Parameterized.class)
 public class PutConvertDocXpsTest extends BaseTest {
-    private String name;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-    private String localName;
-    private String versionId;
+    private final String name;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String folder;
+    private final String storage;
+    private final String localName;
+    private final String versionId;
     private ConversionApi api;
     private StorageApi storageApi;
-    
-	private static String localFolder = Configuration.getTestDstDir();
-    
+
    //Constructor that takes test data.
     public PutConvertDocXpsTest(
         Integer width,
@@ -121,8 +114,7 @@ public class PutConvertDocXpsTest extends BaseTest {
 		}else {
 			fileName += "B--";
 		}
-		
-		this.localName = fileName + ".xps"; 
+		this.localName = fileName + ".xps";
     }
     
     @Before
@@ -181,7 +173,6 @@ public class PutConvertDocXpsTest extends BaseTest {
 		MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
 		try {
-
             Call<ResponseBody> call = api.PutConvertDocumentToXps(name, this.folder +"/" + localName, width, height, leftMargin, rightMargin, topMargin, bottomMargin, folder, storage);
             Response<ResponseBody> res = call.execute();
             assertTrue(res.isSuccessful());
@@ -191,7 +182,6 @@ public class PutConvertDocXpsTest extends BaseTest {
 
 			//Save to test directory
 			TestHelper.checkAndSave(call, localName);
-
     	}catch(Exception e) {
         	e.printStackTrace();
         	fail();

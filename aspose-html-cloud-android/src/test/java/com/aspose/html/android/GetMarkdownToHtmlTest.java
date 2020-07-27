@@ -28,8 +28,8 @@
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ImportApi;
-import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.ObjectExist;
+import com.aspose.html.android.api.StorageApi;
+import com.aspose.html.android.model.ObjectExist;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -48,10 +48,10 @@ import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class GetMarkdownToHtmlTest extends BaseTest{
-    private String name;
-    private String folder;
-    private String storage;
-    private String resultName;
+    private final String name;
+    private final String folder;
+    private final String storage;
+    private final String resultName;
     private ImportApi api;
     private StorageApi storageApi;
 
@@ -79,11 +79,8 @@ public class GetMarkdownToHtmlTest extends BaseTest{
     public void test() {
 
     	try {
-
 			TestHelper.uploadFile(name, folder);
-
 			Call<ObjectExist> call = storageApi.objectExists(folder + "/" + name,	null, null);
-
 			Response<ObjectExist> res = call.execute();
 			assertTrue(res.isSuccessful());
 
@@ -97,7 +94,6 @@ public class GetMarkdownToHtmlTest extends BaseTest{
 
 			Response<Void> res2 = call_response.execute();
 			assertTrue(res2.isSuccessful());
-
         }catch(Exception e) {
         	e.printStackTrace();
             fail();

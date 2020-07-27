@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostConvertImgTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -29,11 +29,9 @@ package com.aspose.html.android;
 
 import static java.lang.System.out;
 import static org.junit.Assert.*;
-
 import java.util.Arrays;
 import java.util.Collection;
 import java.io.File;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -43,27 +41,26 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 import retrofit2.Call;
 import retrofit2.Response;
 
 @RunWith(Parameterized.class)
 public class PostConvertImgTest extends BaseTest {
 
-    private String name;
-    private String outFormat;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private Integer resolution;
-    private String folder;
-    private String storage;
-    private String versionId;
-    private String localName;
+    private final String name;
+    private final String outFormat;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final Integer resolution;
+    private final String folder;
+    private final String storage;
+    private final String versionId;
+    private final String localName;
     private ConversionApi api;
     private StorageApi storageApi;
 
@@ -186,7 +183,6 @@ public class PostConvertImgTest extends BaseTest {
     	});
     }
 
-    
     @Test
     public void test() {
 		File f = new File(Configuration.getTestSrcDir(), name);
@@ -198,10 +194,8 @@ public class PostConvertImgTest extends BaseTest {
 		MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
 		try {
-
 			Call<ResponseBody> call = api.PostConvertDocumentInRequestToImage(outFormat,file,this.folder +"/" + localName,
     				  width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution);
-
 			Response<ResponseBody> res = call.execute();
 			assertTrue(res.isSuccessful());
 
@@ -210,11 +204,9 @@ public class PostConvertImgTest extends BaseTest {
 
 			//Save to test directory
 			TestHelper.checkAndSave(call, localName);
-    		
-        }catch(Exception e) {
+         }catch(Exception e) {
         	e.printStackTrace();
         	fail();
         }
     }
-    
 }

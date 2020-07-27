@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadFragmentTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,40 +24,29 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.DocumentApi;
-import com.aspose.storage.android.api.StorageApi;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class DocLoadFragmentCSSTest extends BaseTest{
-    private String name;
-    private String selector;
-    private String outFormat;
-    private String folder;
-    private String storage;
-
-    private String localName;
-
+    private final String name;
+    private final String selector;
+    private final String outFormat;
+    private final String folder;
+    private final String storage;
+    private final String localName;
     private DocumentApi api;
-    private StorageApi storageApi;
-
 
     public DocLoadFragmentCSSTest(String name, String selector, String outFormat) {
         super();
@@ -68,13 +57,11 @@ public class DocLoadFragmentCSSTest extends BaseTest{
         this.storage = null;
         String ext = outFormat.equals("json") ? ".json" : ".html";
         this.localName = "DocCSSLoad_" + name + ext;
-
     }
 
     @Before
     public void initialize() {
         api = new ApiClient().createService(DocumentApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
     }
 
     @Parameterized.Parameters
@@ -94,11 +81,8 @@ public class DocLoadFragmentCSSTest extends BaseTest{
         try {
 
             TestHelper.uploadFile(name, folder);
-
             Call<ResponseBody> call = api.GetDocumentFragmentsByCSSSelector(name, outFormat, selector, folder, storage);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

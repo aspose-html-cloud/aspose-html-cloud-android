@@ -3,7 +3,7 @@
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.TemplateMergeApi;
-import com.aspose.storage.android.api.StorageApi;
+import com.aspose.html.android.api.StorageApi;
 
 import org.junit.Before;
 import org.junit.Test;

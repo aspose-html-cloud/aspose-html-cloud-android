@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutHtmlToMarkdownTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,39 +24,32 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import com.aspose.html.android.api.ConversionApi;
-import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.ObjectExist;
-
+import com.aspose.html.android.api.StorageApi;
+import com.aspose.html.android.model.ObjectExist;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
 
-
 @RunWith(Parameterized.class)
 public class PutHtmlToMarkdownTest extends BaseTest{
-    private String  name;
-    private Boolean useGit;
-    private String folder;
-    private String storage;
-    private String resultName;
+    private final String  name;
+    private final Boolean useGit;
+    private final String folder;
+    private final String storage;
+    private final String resultName;
     private ConversionApi api;
     private StorageApi storageApi;
-    
 
    //Constructor that takes test data.
     public PutHtmlToMarkdownTest(Boolean useGit)
@@ -73,8 +66,7 @@ public class PutHtmlToMarkdownTest extends BaseTest{
 		}else {
 			name += "notUsingGit";
 		}
-		
-		this.resultName = name + ".md"; 
+		this.resultName = name + ".md";
     }
     
     @Before
@@ -116,7 +108,6 @@ public class PutHtmlToMarkdownTest extends BaseTest{
 
             Response<Void> res2 = call_response.execute();
             assertTrue(res2.isSuccessful());
-     		
         }catch(Exception e) {
         	e.printStackTrace();
             fail();

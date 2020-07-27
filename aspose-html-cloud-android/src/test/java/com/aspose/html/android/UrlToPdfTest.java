@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UrlToPdfTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,23 +24,15 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import java.util.Arrays;
 import java.util.Collection;
-
-import static java.lang.System.out;
-
-
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
 import static org.junit.Assert.assertTrue;
-
 import com.aspose.html.android.api.ConversionApi;
 import org.junit.runners.Parameterized;
 import retrofit2.Call;
@@ -48,18 +40,14 @@ import retrofit2.Call;
 
 @RunWith(Parameterized.class)
 public class UrlToPdfTest extends BaseTest {
-    private String sourceUrl;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-
-    private String localFolder = Configuration.getTestDstDir();
-    private String localName;
+    private final String sourceUrl;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
@@ -79,8 +67,6 @@ public class UrlToPdfTest extends BaseTest {
         this.rightMargin = rightMargin;
         this.topMargin = topMargin;
         this.bottomMargin = bottomMargin;
-        this.folder = "";
-
 
         String savesName = "UrlToPdf_";
 
@@ -113,7 +99,6 @@ public class UrlToPdfTest extends BaseTest {
         } else {
             savesName += "B---";
         }
-
         this.localName = savesName + ".pdf";
     }
 
@@ -162,8 +147,6 @@ public class UrlToPdfTest extends BaseTest {
 
     @Test
     public void test() {
-        out.println("Test url to pdf ");
-
         try {
             Call<ResponseBody> call = api.GetConvertDocumentToPdfByUrl(
                     sourceUrl,
@@ -172,9 +155,7 @@ public class UrlToPdfTest extends BaseTest {
                     leftMargin,
                     rightMargin,
                     topMargin,
-                    bottomMargin,
-                    folder,
-                    storage);
+                    bottomMargin);
 
             TestHelper.checkAndSave(call, localName);
 

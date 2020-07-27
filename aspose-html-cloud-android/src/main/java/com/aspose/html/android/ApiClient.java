@@ -24,7 +24,6 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import com.google.gson.Gson;
@@ -36,7 +35,6 @@ import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
-
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
@@ -47,10 +45,12 @@ public class ApiClient {
 
     private OkHttpClient.Builder okBuilder;
     private Retrofit.Builder adapterBuilder;
-    private static JSON json = new JSON();
+    private static final JSON json = new JSON();
 
     private static String accessToken;
     private static String userAgent;
+    private static final String clientHeaderName = "x-aspose-client";
+    private static final String clientVersionHeaderName = "x-aspose-client-version";
 
     public ApiClient()
     {
@@ -80,7 +80,9 @@ public class ApiClient {
                     // Request customization: add request headers
                     Request.Builder requestBuilder = original.newBuilder()
                             .addHeader("Authorization", accessToken)
-							.addHeader("User-Agent", userAgent);
+							.addHeader("User-Agent", userAgent)
+							.addHeader(clientHeaderName, BuildConfig.VERSION_HEADER)
+							.addHeader(clientVersionHeaderName, BuildConfig.VERSION_NUMBER);
 
                     //ToDo: Kestrel decode %2F('/') and %5C ('\') to '/' bug
                     String orignUrl = original.url().toString();

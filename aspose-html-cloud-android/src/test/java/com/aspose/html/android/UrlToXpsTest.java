@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="UrlToXpsTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,14 +24,10 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
-import static java.lang.System.out;
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.aspose.html.android.api.ConversionApi;
 import okhttp3.ResponseBody;
 import org.junit.Before;
@@ -39,23 +35,19 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import retrofit2.Call;
-
 import static org.junit.Assert.assertTrue;
 
 
 @RunWith(Parameterized.class)
 public class UrlToXpsTest extends BaseTest {
-    private String sourceUrl;
-    private Integer width;
-    private Integer height;
-    private Integer leftMargin;
-    private Integer rightMargin;
-    private Integer topMargin;
-    private Integer bottomMargin;
-    private String folder;
-    private String storage;
-
-    private String localName;
+    private final String sourceUrl;
+    private final Integer width;
+    private final Integer height;
+    private final Integer leftMargin;
+    private final Integer rightMargin;
+    private final Integer topMargin;
+    private final Integer bottomMargin;
+    private final String localName;
     private ConversionApi api;
 
     //Constructor that takes test data.
@@ -75,7 +67,6 @@ public class UrlToXpsTest extends BaseTest {
         this.rightMargin = rightMargin;
         this.topMargin = topMargin;
         this.bottomMargin = bottomMargin;
-        this.folder = Configuration.getTestDstDir();
 
         String savedName = "UrlToXps_";
 
@@ -108,7 +99,6 @@ public class UrlToXpsTest extends BaseTest {
         } else {
             savedName += "B---";
         }
-
         this.localName = savedName + ".xps";
     }
 
@@ -157,8 +147,6 @@ public class UrlToXpsTest extends BaseTest {
 
     @Test
     public void test() {
-        out.println("Test url to xps ");
-
         try {
             Call<ResponseBody> call = api.GetConvertDocumentToXpsByUrl(
                     sourceUrl,
@@ -167,10 +155,7 @@ public class UrlToXpsTest extends BaseTest {
                     leftMargin,
                     rightMargin,
                     topMargin,
-                    bottomMargin,
-                    folder,
-                    storage);
-
+                    bottomMargin);
             TestHelper.checkAndSave(call, localName);
 
         } catch (Exception e) {

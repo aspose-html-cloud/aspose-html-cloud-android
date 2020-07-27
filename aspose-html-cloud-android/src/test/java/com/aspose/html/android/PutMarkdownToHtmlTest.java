@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PutMarkdownToHtmlTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,38 +24,32 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ImportApi;
-import com.aspose.storage.android.api.StorageApi;
-import com.aspose.storage.android.model.ObjectExist;
-
+import com.aspose.html.android.api.StorageApi;
+import com.aspose.html.android.model.ObjectExist;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
-
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 
 @RunWith(Parameterized.class)
 public class PutMarkdownToHtmlTest extends BaseTest{
-    private String  name;
-    private String folder;
-    private String storage;
-    private String resultName;
+    private final String  name;
+    private final String folder;
+    private final String storage;
+    private final String resultName;
     private ImportApi api;
     private StorageApi storageApi;
-
 
    //Constructor that takes test data.
     public PutMarkdownToHtmlTest(String name)

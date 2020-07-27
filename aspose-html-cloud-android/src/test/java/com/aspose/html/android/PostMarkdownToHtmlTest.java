@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="PostMarkdownToHtmlTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,40 +24,34 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ImportApi;
-import com.aspose.storage.android.api.StorageApi;
-
+import com.aspose.html.android.api.StorageApi;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Response;
-
 import static java.lang.System.out;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-
 @RunWith(Parameterized.class)
 public class PostMarkdownToHtmlTest extends BaseTest{
-	private String name;
-    private String localName;
-    private String folder;
-    private String storage;
-    private String versionId;
+	private final String name;
+    private final String localName;
+    private final String folder;
+    private final String storage;
+    private final String versionId;
     private ImportApi api;
     private StorageApi storageApi;
 
@@ -93,7 +87,6 @@ public class PostMarkdownToHtmlTest extends BaseTest{
 		MultipartBody.Part file = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
     	try {
-
     		String outPath = folder + "/" + localName;
 
 			Call<ResponseBody> call = api.PostConvertMarkdownInRequestToHtml(file, outPath, storage);
@@ -105,7 +98,6 @@ public class PostMarkdownToHtmlTest extends BaseTest{
 
 			//Save to test directory
 			TestHelper.checkAndSave(call, localName);
-
     	}catch(Exception e) {
         	e.printStackTrace();
             fail();

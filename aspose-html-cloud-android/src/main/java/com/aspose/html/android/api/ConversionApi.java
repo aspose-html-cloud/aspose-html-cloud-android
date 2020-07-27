@@ -48,7 +48,7 @@ public interface ConversionApi {
      * @param resolution   Resolution of resulting image. (optional)
      * @param folder       The source document folder. (optional)
      * @param storage      The source document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call	&lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/convert/image/{outFormat}")
@@ -78,9 +78,7 @@ public interface ConversionApi {
      * @param topMargin    Top resulting image margin. (optional)
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param resolution   Resolution of resulting image. (optional)
-     * @param folder       The document folder. (optional)
-     * @param storage      The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/convert/image/{outFormat}")
@@ -93,9 +91,7 @@ public interface ConversionApi {
             @Query("rightMargin") Integer rightMargin,
             @Query("topMargin") Integer topMargin,
             @Query("bottomMargin") Integer bottomMargin,
-            @Query("resolution") Integer resolution,
-            @Query("folder") String folder,
-            @Query("storage") String storage
+            @Query("resolution") Integer resolution
     );
 
     /**
@@ -110,7 +106,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/convert/pdf")
@@ -136,9 +132,7 @@ public interface ConversionApi {
      * @param rightMargin  Right resulting image margin. (optional)
      * @param topMargin    Top resulting image margin. (optional)
      * @param bottomMargin Bottom resulting image margin. (optional)
-     * @param folder       The document folder. (optional)
-     * @param storage      The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/convert/pdf")
@@ -149,9 +143,7 @@ public interface ConversionApi {
             @Query("leftMargin") Integer leftMargin,
             @Query("rightMargin") Integer rightMargin,
             @Query("topMargin") Integer topMargin,
-            @Query("bottomMargin") Integer bottomMargin,
-            @Query("folder") String folder,
-            @Query("storage") String storage
+            @Query("bottomMargin") Integer bottomMargin
     );
 
     /**
@@ -166,7 +158,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting image margin. (optional)
      * @param folder       The document folder. (optional)
      * @param storage      The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/{name}/convert/xps")
@@ -192,9 +184,7 @@ public interface ConversionApi {
      * @param rightMargin  Right resulting image margin. (optional)
      * @param topMargin    Top resulting image margin. (optional)
      * @param bottomMargin Bottom resulting image margin. (optional)
-     * @param folder       The document folder. (optional)
-     * @param storage      The document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @GET("html/convert/xps")
@@ -205,9 +195,7 @@ public interface ConversionApi {
             @Query("leftMargin") Integer leftMargin,
             @Query("rightMargin") Integer rightMargin,
             @Query("topMargin") Integer topMargin,
-            @Query("bottomMargin") Integer bottomMargin,
-            @Query("folder") String folder,
-            @Query("storage") String storage
+            @Query("bottomMargin") Integer bottomMargin
     );
 
     /**
@@ -223,7 +211,7 @@ public interface ConversionApi {
      * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
      * @param resolution Resolution of resulting image. Default is 96 dpi. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Multipart
     @POST("html/convert/image/{outFormat}")
@@ -251,7 +239,7 @@ public interface ConversionApi {
      * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
      * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Multipart
     @POST("html/convert/pdf")
@@ -277,7 +265,7 @@ public interface ConversionApi {
      * @param rightMargin Right resulting document page margin in points (1/96 inch). (optional)
      * @param topMargin Top resulting document page margin in points (1/96 inch). (optional)
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Multipart
     @POST("html/convert/xps")
@@ -307,7 +295,7 @@ public interface ConversionApi {
      * @param resolution Resolution of resulting image. Default is 96 dpi. (optional)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @PUT("html/{name}/convert/image/{outFormat}")
@@ -339,7 +327,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @PUT("html/{name}/convert/pdf")
@@ -369,7 +357,7 @@ public interface ConversionApi {
      * @param bottomMargin Bottom resulting document page margin in points (1/96 inch). (optional)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Headers({"Content-Type:application/json"})
     @PUT("html/{name}/convert/xps")
@@ -390,9 +378,8 @@ public interface ConversionApi {
      * Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
      *
      * @param sourceUrl Source page URL. (required)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
-
     @GET("html/convert/mhtml")
     Call<ResponseBody> GetConvertDocumentToMHTMLByUrl(
             @Query("sourceUrl") String sourceUrl
@@ -405,7 +392,7 @@ public interface ConversionApi {
      * @param useGit Use Git Markdown flavor to save. (optional, default to false)
      * @param folder Source document folder. (optional)
      * @param storage Source document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @GET("html/{name}/convert/md")
     Call<ResponseBody> GetConvertDocumentToMarkdown(
@@ -423,7 +410,7 @@ public interface ConversionApi {
      * @param useGit Use Git Markdown flavor to save. (optional, default to false)
      * @param folder The source document folder. (optional)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @PUT("html/{name}/convert/md")
     Call<ResponseBody> PutConvertDocumentToMarkdown(
@@ -441,7 +428,7 @@ public interface ConversionApi {
      * @param outPath Full resulting file path in the storage (ex. /folder1/folder2/result.md) (required)
      * @param useGit Use Git Markdown flavor to save. (optional, default to false)
      * @param storage The source and resulting document storage. (optional)
-     * @return Call<ResponseBody>
+     * @return Call &lt;ResponseBody&gt;
      */
     @Multipart
     @POST("html/convert/md")

@@ -44,10 +44,10 @@ import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class DocLoadFragmentByUrlTest extends BaseTest{
-    private String sourceUrl;
-    private String xPath;
-    private String outFormat;
-    private String localName;
+    private final String sourceUrl;
+    private final String xPath;
+    private final String outFormat;
+    private final String localName;
     private DocumentApi api;
 
 
@@ -83,9 +83,7 @@ public class DocLoadFragmentByUrlTest extends BaseTest{
         try {
 
             Call<ResponseBody> call = api.GetDocumentFragmentByXPathByUrl(outFormat, sourceUrl, xPath);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

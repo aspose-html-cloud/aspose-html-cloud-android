@@ -1,22 +1,5 @@
-buildscript {
-
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.3'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-    }
-}
-
-
-def isReleaseBuild() {
-    return version.contains("SNAPSHOT") == false
-}
-
 allprojects {
-    version = "19.5.0"
+    version = "20.7.0"
     group = "com.aspose"
 
     repositories {
@@ -25,19 +8,32 @@ allprojects {
     }
 }
 
-ext {
-    compileSdkVersion = 29
-    targetSdkVersion = 29
-    minSdkVersion = 19
-    supportLibVersion = "29.0.3"
-    buildToolsVersion = "29.0.3"
-    var = '29.0.3'
+buildscript {
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.0.1'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
+    }
 }
 
+def isReleaseBuild() {
+    return version.contains("SNAPSHOT") == false
+}
+
+ext {
+    compileSdkVersion = 30
+    targetSdkVersion = 30
+    minSdkVersion = 19
+    supportLibVersion = "30.0.1"
+    buildToolsVersion = "30.0.1"
+}
 
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
 apply plugin: 'android-reporting'
-

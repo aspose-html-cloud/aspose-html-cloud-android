@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadImagesTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,38 +24,27 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import static java.lang.System.out;
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import com.aspose.html.android.api.DocumentApi;
 import okhttp3.ResponseBody;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
-import com.aspose.storage.android.api.StorageApi;
-
 import retrofit2.Call;
 
 @RunWith(Parameterized.class)
 public class DocLoadImagesTest extends BaseTest {
-    private String name;
-    private String storage;
-    private String folder;
-
-    private String localName;
+    private final String name;
+    private final String storage;
+    private final String folder;
+    private final String localName;
     private DocumentApi api;
-    private StorageApi storageApi;
-
 
     public DocLoadImagesTest(String name) {
         super();
@@ -68,7 +57,6 @@ public class DocLoadImagesTest extends BaseTest {
     @Before
     public void initialize() {
         api = new ApiClient().createService(DocumentApi.class);
-        storageApi = new ApiClient().createService(StorageApi.class);
     }
 
     @Parameterized.Parameters
@@ -85,11 +73,8 @@ public class DocLoadImagesTest extends BaseTest {
         try {
 
             TestHelper.uploadFile(name, folder);
-
             Call<ResponseBody> call = api.GetDocumentImages(name, folder, storage);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

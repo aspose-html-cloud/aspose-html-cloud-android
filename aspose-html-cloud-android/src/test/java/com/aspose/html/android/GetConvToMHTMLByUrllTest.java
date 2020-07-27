@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="GetConvToMHTMLByUrllTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,32 +24,25 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.ConversionApi;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class GetConvToMHTMLByUrllTest extends BaseTest{
-    private String sourceUrl;
-    private String localName;
+    private final String sourceUrl;
+    private final String localName;
     private ConversionApi api;
-
 
     public GetConvToMHTMLByUrllTest(Integer numTest, String sourceUrl) {
         super();
@@ -75,11 +68,8 @@ public class GetConvToMHTMLByUrllTest extends BaseTest{
     public void test() {
         out.println("Test convert to mhtml by url");
         try {
-
             Call<ResponseBody> call = api.GetConvertDocumentToMHTMLByUrl(sourceUrl);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();

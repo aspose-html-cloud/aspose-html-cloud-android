@@ -1,7 +1,7 @@
 /*
 * --------------------------------------------------------------------------------------------------------------------
 * <copyright company="Aspose" file="DocLoadFragmentByUrlTest.java">
-*   Copyright (c) 2019 Aspose.HTML for Cloud
+*   Copyright (c) 2020 Aspose.HTML for Cloud
 * </copyright>
 * <summary>
 *   Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -24,32 +24,26 @@
 * </summary>
 * --------------------------------------------------------------------------------------------------------------------
 */
-
-
 package com.aspose.html.android;
 
 import com.aspose.html.android.api.DocumentApi;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-
 import java.util.Arrays;
 import java.util.Collection;
-
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-
 import static java.lang.System.out;
 import static org.junit.Assert.fail;
 
 @RunWith(Parameterized.class)
 public class DocLoadFragmentCSSByUrlTest extends BaseTest{
-    private String sourceUrl;
-    private String selector;
-    private String outFormat;
-    private String localName;
+    private final String sourceUrl;
+    private final String selector;
+    private final String outFormat;
+    private final String localName;
     private DocumentApi api;
 
 
@@ -61,7 +55,6 @@ public class DocLoadFragmentCSSByUrlTest extends BaseTest{
 
         String ext = outFormat.equals("json") ? ".json" : ".html";
         this.localName = "DocCSSByUrl_" + ext;
-
     }
 
     @Before
@@ -85,9 +78,7 @@ public class DocLoadFragmentCSSByUrlTest extends BaseTest{
         try {
 
             Call<ResponseBody> call = api.GetDocumentFragmentsByCSSSelectorByUrl(outFormat, sourceUrl, selector);
-
             TestHelper.checkAndSave(call, localName);
-
         } catch (Exception e) {
             e.printStackTrace();
             fail();
