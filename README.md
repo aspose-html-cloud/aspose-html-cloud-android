@@ -1,12 +1,41 @@
-# Aspose.HTML Cloud SDK for Android
-This repository contains Aspose.HTML Cloud SDK for Android source code. This SDK allows you to work with Aspose.HTML Cloud REST APIs in your Android applications quickly and easily.
+![](https://img.shields.io/badge/api-v3.0-lightgrey)  [![GitHub license](https://img.shields.io/github/license/aspose-html-cloud/aspose-html-cloud-android)](https://github.com/aspose-html-cloud/aspose-html-cloud-android/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-html-Cloud/aspose-html-cloud-android)
+# HTML Rendering & Conversion Android Cloud REST API
+Aspose.HTML Cloud for android is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose.HTML Cloud for Android/Java speeds up HTML programming and conversion.
+This cloud SDK assists to develop cloud-based [HTML page rendering, processing, translation & conversion](https://products.aspose.cloud/html/android) apps in Android & Java via REST API.
 
-See [API Reference](https://apireference.aspose.cloud/html/) for full API specification.
+## HTML Processing Features
+- Fetch the HTML page along with its resources as a ZIP archive by providing the page URL.
+- Based on page URL, retrieve all images of an HTML page as a ZIP package.
+- Load data from a local file to populate the HTML document template.
+- Use the request body to populate the HTML document template.
+- Convert HTML page to numerous other file formats.
+
+## Read & Write HTML Formats
+HTML, XHTML, zipped HTML, zipped XHTML, MHTML, HTML containing SVG markup, Markdown, JSON
+
+## Save HTML As
+*Fixed Layout*: PDF, XPS
+*Images*: TIFF, JPEG, PNG, BMP, GIF
+*Other*: TXT, ZIP (images)
+
+## Read HTML Formats
+*eBook*: EPUB
+*Other*: XML, SVG
+
+## Enhancements Version 20.11
+
+- New generation of Aspose.HTML Cloud SDK for .NET (C#) is provided.
+- This version of SDK has been redesigned from scratch being based on the new Aspose.HTML Cloud REST API (v3.0).
+- Currently, it provides only the conversion feature. Other features that are still available in the versions up to v.20.08 are planned to be implemented in this SDK later.
+- Conversion interface provides a more flexible conversion parameters setup.
+- Redesigned storage access is provided using SDK entry point HtmlApi.Storage.
+- Availability of synchronous and asynchronous file upload and download methods.
+- Asynchronous download provides the ability to get progress data for the longer downloads.
 
 
 ## How to use the SDK?
 The complete source code is available in this repository folder, you can either directly use it in your project.
-   
+
 This project includes:   
 - Android dummy application - "/app"
 - Module "html" - this SDK in "/aspose-html-cloud-android"
@@ -82,13 +111,13 @@ import retrofit2.Call;
 import retrofit2.Response;
 
 public class App {
-    
+
     // Helper method save the response body to the destination directory
     public static long saveToDisc(ResponseBody body, String fileName) {
 
         File savedFile = new File(Configuration.getTestDstDir() + File.separator + fileName);
         long fileSizeDownloaded = 0;
-        
+
         try (InputStream inputStream = body.byteStream();
              OutputStream outputStream = new FileOutputStream(savedFile))
         {
@@ -111,7 +140,7 @@ public class App {
     public static void main(String[] args) {
 
 // Get keys from aspose site.
-// There is free quota available. 
+// There is free quota available.
 // For more details, see https://purchase.aspose.cloud/pricing
 
         Configuration.setAPI_KEY("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
@@ -125,8 +154,8 @@ public class App {
 
         String name = "test.html";// Document name. Place the html document in the folder "testdata".
         String outFormat = "jpg"; // Convert to jpg
-        Integer width = 800; // Resulting image width. 
-        Integer height = 1000; // Resulting image height. 
+        Integer width = 800; // Resulting image width.
+        Integer height = 1000; // Resulting image height.
         Integer leftMargin = 10; // Left resulting image margin.
         Integer rightMargin = 10; // Right resulting image margin.
         Integer topMargin = 10; // Top resulting image margin.
@@ -134,14 +163,14 @@ public class App {
         Integer resolution = 300; // Resolution of resulting image.
         String folder = "/"; // The folder in the storage. Should exist.
         String storage = null; // Name of the storage. null
-        
+
         // Creating API for need operations
         ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
         StorageApi storageApi = new ApiClient().createService(StorageApi.class);
-        
+
 
         try {
-            
+
             // Upload file to storage
             // Test file in the "/testdata" folder in the root of the project
             File f = new File(Configuration.getTestSrcDir(), name);
@@ -150,7 +179,7 @@ public class App {
                 System.out.println("file not found");
                 throw new RuntimeException("Test file not found");
             }
-            
+
             RequestBody requestBody = RequestBody.create( MediaType.parse("multipart/form-data"), f);
             MultipartBody.Part fileToUpload = MultipartBody.Part.createFormData("file", f.getName(), requestBody);
 
@@ -158,20 +187,20 @@ public class App {
             Call<FilesUploadResult> callUpload = storageApi.uploadFile(folder + File.separator + name, fileToUpload, null);
             Response<FilesUploadResult> res = callUpload.execute();
             System.out.println("Executed is successful = " + res.isSuccessful());  
-                        
+
             // Prepare call execute
             Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
-     
+
             // Execute request
             Response<ResponseBody> img = call.execute();
-             
+
             // Get body from response
             ResponseBody answer = img.body();
-            
+
             // Save to test directory
             long result = saveToDisc(answer, "test.zip");
             System.out.println("Result size = " + result);
-                
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -260,9 +289,11 @@ Method | HTTP request | Description
 [Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
 
 
-## Dependencies
-[See build.gradle](./build.gradle)
+## Aspose.HTML Cloud SDKs in Popular Languages
 
+| .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|C++|Go|
+|---|---|---|---|---|---|---|--|--|--|
+| [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-dotnet) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-java) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-php) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-python) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby)  | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-nodejs) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-android) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-swift)|[GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-cpp) |[GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-go) |
+| [NuGet](https://www.nuget.org/packages/Aspose.html-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-html-cloud) | [Composer](https://packagist.org/packages/aspose/aspose-html-cloud-php) | [PIP](https://pypi.org/project/asposehtmlcloud/) | [GEM](https://rubygems.org/gems/aspose_html_cloud)  | [NPM](https://www.npmjs.com/package/@asposecloud/aspose-html-cloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-html-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposeHtmlCloud)|[NuGet](https://www.nuget.org/packages/Aspose.Html-Cloud.Cpp/) | [Go.Dev](#) |
 
-## Contact Us
-Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.aspose.cloud/html).
+[Product Page](https://products.aspose.cloud/html/android) | [Documentation](https://docs.aspose.cloud/display/htmlcloud/Home) | [API Reference](https://apireference.aspose.cloud/html/) | [Code Samples](https://github.com/aspose-html-cloud/aspose-html-cloud-android) | [Blog](https://blog.aspose.cloud/category/html/) | [Free Support](https://forum.aspose.cloud/c/html) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
