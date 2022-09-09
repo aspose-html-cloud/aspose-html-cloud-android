@@ -1,44 +1,15 @@
-![](https://img.shields.io/badge/api-v3.0-lightgrey)  [![GitHub license](https://img.shields.io/github/license/aspose-html-cloud/aspose-html-cloud-android)](https://github.com/aspose-html-cloud/aspose-html-cloud-android/blob/master/LICENSE) ![GitHub last commit](https://img.shields.io/github/last-commit/Aspose-html-Cloud/aspose-html-cloud-android)
-# HTML Rendering & Conversion Android Cloud REST API
-Aspose.HTML Cloud for android is a programming SDK that allows software developers to manipulate and convert HTML documents from within their own applications. A Wrapper of RESTful APIs, Aspose.HTML Cloud for Android/Java speeds up HTML programming and conversion.
-This cloud SDK assists to develop cloud-based [HTML page rendering, processing, translation & conversion](https://products.aspose.cloud/html/android) apps in Android & Java via REST API.
+# Aspose.HTML Cloud SDK for Android
+This repository contains Aspose.HTML Cloud SDK for Android source code. This SDK allows you to work with Aspose.HTML Cloud REST APIs in your Android applications quickly and easily.
 
-## HTML Processing Features
-- Fetch the HTML page along with its resources as a ZIP archive by providing the page URL.
-- Based on page URL, retrieve all images of an HTML page as a ZIP package.
-- Load data from a local file to populate the HTML document template.
-- Use the request body to populate the HTML document template.
-- Convert HTML page to numerous other file formats.
-
-## Read & Write HTML Formats
-HTML, XHTML, zipped HTML, zipped XHTML, MHTML, HTML containing SVG markup, Markdown, JSON
-
-## Save HTML As
-*Fixed Layout*: PDF, XPS
-*Images*: TIFF, JPEG, PNG, BMP, GIF
-*Other*: TXT, ZIP (images)
-
-## Read HTML Formats
-*eBook*: EPUB
-*Other*: XML, SVG
-
-## Enhancements Version 20.11
-
-- New generation of Aspose.HTML Cloud SDK for .NET (C#) is provided.
-- This version of SDK has been redesigned from scratch being based on the new Aspose.HTML Cloud REST API (v3.0).
-- Currently, it provides only the conversion feature. Other features that are still available in the versions up to v.20.08 are planned to be implemented in this SDK later.
-- Conversion interface provides a more flexible conversion parameters setup.
-- Redesigned storage access is provided using SDK entry point HtmlApi.Storage.
-- Availability of synchronous and asynchronous file upload and download methods.
-- Asynchronous download provides the ability to get progress data for the longer downloads.
+See [API Reference](https://apireference.aspose.cloud/html/) for full API specification.
 
 
 ## How to use the SDK?
 The complete source code is available in this repository folder, you can either directly use it in your project.
-
+   
 This project includes:   
 - Android dummy application - "/app"
-- Module "html" - this SDK in "/aspose-html-cloud-android"
+- Module "sdk" - this SDK in "/aspose-html-cloud-android"
 
 
 ### Prerequisites
@@ -68,7 +39,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud-android</artifactId>
-		<version>20.12.0</version>
+		<version>22.9.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -82,144 +53,84 @@ To build the API client library, simply execute:
 ```shell
 gradlew.bat build -x test //skip tests
 ```
+It needs JDK-11 or bigger. Use JDK from the command line
+
+```shell
+gradle build -Dorg.gradle.java.home=e:/UTILS/Java/jdk-17/
+```
 
 To run test from command string:
 ```shell
 gradlew.bat test
 ```
 
-## Convert HTML to JPG in Android using Java
-
+### Sample usage
+The examples below show how your application have to initiate and convert url to image using Aspose.HTML Cloud library:
 ```java
-	// Get your ClientId and ClientSecret from https://dashboard.aspose.cloud (free registration required).
+package com.aspose.test_package;
 
-	Configuration.setAPP_SID("MY_CLIENT_ID");
-	Configuration.setAPI_KEY("MY_CLIENT_SECRET");
-	Configuration.setBasePath("https://api.aspose.cloud/v3.0");
-	Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
-	Configuration.setUserAgent("WebKit");
-	Configuration.setDebug(true);
-	Configuration.setTestSrcDir("My_Source_Folder");
-	Configuration.setTestDstDir("My_Output_Folder");
 
-	ConversionApi conversionApi = new ApiClient().createService(ConversionApi.class);
-	
-	String name = "test.html";// Document name. Place the html document in the folder "testdata".
-	String outFormat = "jpg"; // Convert to jpg
-	
-	Integer width = 800; // Resulting image width.
-	Integer height = 1000; // Resulting image height.
-	Integer leftMargin = 10; // Left resulting image margin.
-	Integer rightMargin = 10; // Right resulting image margin.
-	Integer topMargin = 10; // Top resulting image margin.
-	Integer bottomMargin = 10; // Bottom resulting image margin.
-	Integer resolution = 300; // Resolution of resulting image.
-	String folder = "/"; // The folder in the storage. Should exist.
-	String storage = "My_Storage_Name"; // Name of the storage. null
-	
-	// Prepare call execute
-	Call<ResponseBody> call = conversionApi.GetConvertDocumentToImage(name, outFormat, width, height, leftMargin, rightMargin, topMargin, bottomMargin, resolution, folder, storage);
-
-	// Execute request
-	Response<ResponseBody> img = call.execute();
-
-	// Get body from response
-	ResponseBody answer = img.body();
 ```
 
-# Documentation for API Endpoints
-All URIs are relative to *https://api.aspose.cloud/v3.0*
+# Documentation
+All URIs are relative to *https://api.aspose.cloud/*
 
 
-## ConversionApi (INPUT FORMAT: html, epub, swg  OUTPUT FORMAT FOR IMAGES: jpeg, bmp, tiff, png, gif)
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetConvertDocumentToImage** | **GET** /html/{name}/convert/image/{outFormat} | Convert the HTML document from the storage by its name to the specified image format.
-**GetConvertDocumentToImageByUrl** | **GET** /html/convert/image/{outFormat} | Convert the HTML page from the web by its URL to the specified image format.
-**GetConvertDocumentToPdf** | **GET** /html/{name}/convert/pdf | Convert the HTML document from the storage by its name to PDF.
-**GetConvertDocumentToPdfByUrl** | **GET** /html/convert/pdf | Convert the HTML page from the web by its URL to PDF.
-**GetConvertDocumentToXps** | **GET** /html/{name}/convert/xps | Convert the HTML document from the storage by its name to XPS.
-**GetConvertDocumentToXpsByUrl** | **GET** /html/convert/xps | Convert the HTML page from the web by its URL to XPS.
-**PostConvertDocumentInRequestToImage** | **POST** /html/convert/image/{outFormat} | Converts the HTML document (in request content) to the specified image format and uploads resulting file to storage.
-**PostConvertDocumentInRequestToPdf** | **POST** /html/convert/pdf | Converts the HTML document (in request content) to PDF and uploads resulting file to storage.
-**PostConvertDocumentInRequestToXps** | **POST** /html/convert/xps | Converts the HTML document (in request content) to XPS and uploads resulting file to storage.
-**PutConvertDocumentToImage** | **PUT** /html/{name}/convert/image/{outFormat} | Converts the HTML document (located on storage) to the specified image format and uploads resulting file to storage.
-**PutConvertDocumentToPdf** | **PUT** /html/{name}/convert/pdf | Converts the HTML document (located on storage) to PDF and uploads resulting file to storage.
-**PutConvertDocumentToXps** | **PUT** /html/{name}/convert/xps | Converts the HTML document (located on storage) to XPS and uploads resulting file to storage.
-**GetConvertDocumentToMHTMLByUrl** | **GET** /html/convert/mhtml | Converts the HTML page from Web by its URL to MHTML returns resulting file in response content.
-content.
-**GetConvertDocumentToMarkdown** | **GET** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and returns resulting file in response content.
-**PostConvertDocumentInRequestToMarkdown** | **POST** /html/convert/md | Converts the HTML document (in request content) to Markdown and uploads resulting file to storage by specified path.
-**PutConvertDocumentToMarkdown** | **PUT** /html/{name}/convert/md | Converts the HTML document (located on storage) to Markdown and uploads resulting file to storage by specified path.
+## Conversion builder
+
+| Method                                                   | Parameters                                                                             | Description                                     |
+|----------------------------------------------------------|----------------------------------------------------------------------------------------|-------------------------------------------------|
+| **fromLocalFile(String fileName)**                       | fileName - full path to a local file                                                   | A source is a file in a local file system.      |
+| **fromStorageFile(String fileName)**                     | fileName - path to the file in the cloud storage                                       | A source is a file in the cloud (user storage). |
+| **fromStorageFile(String fileName, String storageName)** | fileName - path to the file in the cloud storage. storageName - your storage, if exist | A source is a file in the cloud (user storage). |
+| **fromUrl(String url)**                                  | url - URI for conversion.                                                              | Convert from url as source.                     |
+| **saveToLocal(String fileName)**                         | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
+| **saveToStorage(String fileName)**                       | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
+| **saveToStorage(String fileName, String storageName)**   | fileName - full path to the result. storageName - your storage, if exist               | Recreating, if the file exists.                 |
+| **useOptions(ConversionOptions options)**                | options - additional options for conversion.                                           | (optional)                                      |
 
 
-## ImportApi
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetConvertMarkdownToHtml** | **GET** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and returns resulting file in response content.
-**PostConvertMarkdownInRequestToHtml** | **POST** /html/import/md | Converts the Markdown document (in request content) to HTML and uploads resulting file to storage by specified path.
-**PutConvertMarkdownToHtml** | **PUT** /html/{name}/import/md | Converts the Markdown document (located on storage) to HTML and uploads resulting file to storage by specified path.
+### useOptions(ConversionOptions)
 
+Specifies the output format for conversion.
 
-## DocumentApi
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetDocumentByUrl** | **GET** /html/download | Return all HTML page with linked resources packaged as a ZIP archive by the source page URL.
-**GetDocumentFragmentByXPath** | **GET** /html/{name}/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query.
-**GetDocumentFragmentByXPathByUrl** | **GET** /html/fragments/{outFormat} | Return list of HTML fragments matching the specified XPath query by the source page URL.
-**GetDocumentFragmentsByCSSSelector** | **GET** /html/{name}/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector.
-**GetDocumentFragmentsByCSSSelectorByUrl** | **GET** /html/fragments/css/{outFormat} | Return list of HTML fragments matching the specified CSS selector by the source page URL.
-**GetDocumentImages** | **GET** /html/{name}/images/all | Return all HTML document images packaged as a ZIP archive.
-**GetDocumentImagesByUrl** | **GET** /html/images/all | Return all HTML page images packaged as a ZIP archive by the source page URL.
+| Options                                                                          | Description                                                               |
+|----------------------------------------------------------------------------------|---------------------------------------------------------------------------|
+| [GIFConversionOptions](docs/ConversionOptions.md#GIFConversionOptions)           | Converting source file or URL to single or several images in GIF format.  |  
+| [JPEGConversionOptions](docs/ConversionOptions.md#JPEGConversionOptions)         | Converting source file or URL to single or several images in JPEG format. | 
+| [PNGConversionOptions](docs/ConversionOptions.md#PNGConversionOptions)           | Converting source file or URL to single or several images in PNG format.  |
+| [TIFFConversionOptions](docs/ConversionOptions.md#TIFFConversionOptions)         | Converting source file or URL to single or several images in TIFF format. |
+| [BMPConversionOptions](docs/ConversionOptions.md#BMPConversionOptions)           | Converting source file or URL to single or several images in BMP format.  |
+| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                                     |
+| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                                     |
+| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                                    |
+| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                                |
 
+### SaveTo...
 
-## TemplateMergeApi    
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetMergeHtmlTemplate** | **GET** /html/{templateName}/merge | Populate HTML document template with data located as a file in the storage.
-**PostMergeHtmlTemplate** | **POST** /html/{templateName}/merge | Populate HTML document template with data from the request body. Result document will be saved to storage.
+The target directory for a conversion result.
 
+| Method                                | Parameters                                    | Description                                                          |
+|---------------------------------------|-----------------------------------------------|----------------------------------------------------------------------|
+| SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a conversion result.    |
+| SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a conversion result. |
 
-## SeoApi    
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**GetSeoWarning** | **GET** /html/seo | Page analysis and return of SEO warnings.
-**GetHtmlWarning** | **GET** /html/validator | Checks the markup validity of Web documents in HTML, XHTML, etc.
+## ConversionResult
 
+Result object for conversion.
 
-## StorageApi
-Method | HTTP request | Description
-------------- | ------------- | -------------
-**downloadFile** | **GET** /html/storage/file/{path} | Download file from storage.
-**uploadFile** | **PUT** /html/storage/file/{path} | Upload file to storage.
-**moveFile** | **PUT** /html/storage/file/move/{srcPath} | Move file in storage.
-**deleteFile** | **DELETE** /html/storage/file/{path} | Delete file in the storage.
-**createFolder** | **PUT** /html/storage/folder/{path} | Create the folder in the storage.
-**moveFolder** | **PUT** /html/storage/folder/move/{srcPath} | Move folder in the storage.
-**deleteFolder** | **DELETE** /html/storage/folder/{path} | Delete folder in the storage.
-**getFilesList** | **GET** /html/storage/folder/{path} | Get all files and folders within a folder.
-**getDiscUsage** | **GET** /html/storage/disc | Get disc usage in the storage.
-**objectExists** | **GET** /html/storage/exist/{path} | Check if file or folder exists.
-**storageExists** | **GET** /html/storage/{storageName}/exist | Check if storage exists.
-**getFileVersions** | **GET** /html/storage/version/{path} | Get file versions in the storage.
+| Field              | Description                                       |
+|--------------------|---------------------------------------------------|
+| String file        | A result file.                                    |
+| String description | A description in case of unsuccessful conversion. |
+
 
 [Tests](./aspose-html-cloud-android/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
-[Docs](./docs/) Full javadoc for Aspose.HTML Api SDK
 
-## Workflow
+## Dependencies
+[See build.gradle](./sdk/build.gradle)
 
-In order to make changes in the repository, you need to:
 
-1. Create a branch with the proposed changes whose name matches the feature/* pattern.
-2. Create a pull request for this branch. It will be automatically assigned to a suitable reviewer.
-3. Once the request is approved, it can be merged.
-
-## Aspose.HTML Cloud SDKs in Popular Languages
-
-| .NET | Java | PHP | Python | Ruby | Node.js | Android | Swift|C++|Go|
-|---|---|---|---|---|---|---|--|--|--|
-| [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-dotnet) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-java) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-php) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-python) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-ruby)  | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-nodejs) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-android) | [GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-swift)|[GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-cpp) |[GitHub](https://github.com/aspose-html-cloud/aspose-html-cloud-go) |
-| [NuGet](https://www.nuget.org/packages/Aspose.html-Cloud/) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-html-cloud) | [Composer](https://packagist.org/packages/aspose/aspose-html-cloud-php) | [PIP](https://pypi.org/project/asposehtmlcloud/) | [GEM](https://rubygems.org/gems/aspose_html_cloud)  | [NPM](https://www.npmjs.com/package/@asposecloud/aspose-html-cloud) | [Maven](https://repository.aspose.cloud/webapp/#/artifacts/browse/tree/General/repo/com/aspose/aspose-html-cloud) | [Cocoapods](https://cocoapods.org/pods/AsposeHtmlCloud)|[NuGet](https://www.nuget.org/packages/Aspose.Html-Cloud.Cpp/) | [Go.Dev](#) |
-
-[Product Page](https://products.aspose.cloud/html/android) | [Documentation](https://docs.aspose.cloud/display/htmlcloud/Home) | [API Reference](https://apireference.aspose.cloud/html/) | [Code Samples](https://github.com/aspose-html-cloud/aspose-html-cloud-android) | [Blog](https://blog.aspose.cloud/category/html/) | [Free Support](https://forum.aspose.cloud/c/html) | [Free Trial](https://dashboard.aspose.cloud/#/apps)
+## Contact Us   
+Your feedback is very important to us. Please feel free to contact us using our [Support Forums](https://forum.aspose.cloud/html).
