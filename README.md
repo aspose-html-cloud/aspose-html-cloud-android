@@ -96,11 +96,7 @@ Specifies the output format for conversion.
 
 | Options                                                                          | Description                                                               |
 |----------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| [GIFConversionOptions](docs/ConversionOptions.md#GIFConversionOptions)           | Converting source file or URL to single or several images in GIF format.  |  
-| [JPEGConversionOptions](docs/ConversionOptions.md#JPEGConversionOptions)         | Converting source file or URL to single or several images in JPEG format. | 
-| [PNGConversionOptions](docs/ConversionOptions.md#PNGConversionOptions)           | Converting source file or URL to single or several images in PNG format.  |
-| [TIFFConversionOptions](docs/ConversionOptions.md#TIFFConversionOptions)         | Converting source file or URL to single or several images in TIFF format. |
-| [BMPConversionOptions](docs/ConversionOptions.md#BMPConversionOptions)           | Converting source file or URL to single or several images in BMP format.  |
+| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images in GIF format.  |  
 | [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                                     |
 | [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                                     |
 | [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                                    |
