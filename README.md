@@ -96,7 +96,7 @@ Specifies the output format for conversion.
 
 | Options                                                                          | Description                                                               |
 |----------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images in GIF format.  |  
+| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images.                |  
 | [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                                     |
 | [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                                     |
 | [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                                    |
