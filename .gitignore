@@ -13,4 +13,5 @@
 .externalNativeBuild
 .cxx
 local.properties
-destTest/**
+destTest/*
+!destTest/.gitkeep

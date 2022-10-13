@@ -14,4 +14,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "AndroidSDK"
 include ':app'
-include ':sdk'
+include ':aspose-html-cloud-android'
