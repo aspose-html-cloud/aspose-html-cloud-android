@@ -64,14 +64,6 @@ To run test from command string:
 gradlew.bat test
 ```
 
-### Sample usage
-The examples below show how your application have to initiate and convert url to image using Aspose.HTML Cloud library:
-```java
-package com.aspose.test_package;
-
-
-```
-
 # Documentation
 All URIs are relative to *https://api.aspose.cloud/*
 
