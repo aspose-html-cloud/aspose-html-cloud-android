@@ -29,7 +29,7 @@ Add this dependency to your project's POM:
 	<repository>
 		<id>AsposeJavaAPI</id>
 		<name>Aspose Java API</name>
-		<url>https://https://releases.aspose.cloud/java/repo/</url>
+		<url>https://repository.aspose.cloud/repo/</url>
 	</repository>
 	...
 </repositories>
