@@ -23,7 +23,7 @@ public class ConvertMarkdownTest extends BaseTest {
     }
 
     @ParameterizedTest(name = "{index} - md -> {0} : local -> local")
-    @ValueSource(strings = { "pdf", "xps", "docx", "jpeg", "bmp", "png", "tiff", "gif" })
+    @ValueSource(strings = { "pdf", "xps", "docx", "html", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertMdLocalToLocal(String ext) {
 
         String outputFile = Configuration.getTestDstDir() + File.separator + "convertMdLocalToLocal." + ext;
@@ -41,7 +41,7 @@ public class ConvertMarkdownTest extends BaseTest {
     }
 
     @ParameterizedTest(name = "{index} - md -> {0} : local -> storage")
-    @ValueSource(strings = { "pdf", "xps", "docx", "jpeg", "bmp", "png", "tiff", "gif" })
+    @ValueSource(strings = { "pdf", "xps", "docx", "html", "mhtml", "jpeg", "bmp", "png", "tiff", "gif" })
     public void convertMdLocalToStorage(String ext) {
 
         String outputFile = "LocalToStorageTest" + File.separator + "convertMdLocalToStorage." + ext;
