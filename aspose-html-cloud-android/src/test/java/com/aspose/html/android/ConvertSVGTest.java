@@ -24,7 +24,7 @@ public class ConvertSVGTest extends BaseTest {
 
     @ParameterizedTest(name = "{index} - svg -> {0} : local -> local")
     @ValueSource(strings = { "pdf", "xps", "jpeg", "bmp", "png", "tiff", "gif" })
-    public void convertMHTMLLocalToLocal(String ext) {
+    public void convertSVGLocalToLocal(String ext) {
 
         String outputFile = Configuration.getTestDstDir() + File.separator + "convertSVGLocalToLocal." + ext;
 
