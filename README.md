@@ -94,13 +94,14 @@ All URIs are relative to *https://api.aspose.cloud/*
 
 Specifies the output format for conversion.
 
-| Options                                                                          | Description                                                               |
-|----------------------------------------------------------------------------------|---------------------------------------------------------------------------|
-| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images.                |  
-| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                                     |
-| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                                     |
-| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                                    |
-| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                                |
+| Options                                                                          | Description                                                |
+|----------------------------------------------------------------------------------|------------------------------------------------------------|
+| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |  
+| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
+| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
+| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
+| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
+| [SVGConversionOptions](docs/ConversionOptions.md#SVGConversionOptions)           | Converting images to SVG (trace image).                    |
 
 ### SaveTo...
 
@@ -125,7 +126,7 @@ Result object for conversion.
 
 
 ## Dependencies
-[See build.gradle](./sdk/build.gradle)
+[See build.gradle](./aspose-html-cloud-android/build.gradle)
 
 
 ## Contact Us   
