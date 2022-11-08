@@ -15,7 +15,8 @@ public enum OutputFormats {
   PDF("PDF"),
   XPS("XPS"),
   DOC("DOC"),
-  DOCX("DOCX");
+  DOCX("DOCX"),
+  SVG("SVG");
 
   private String value;
 

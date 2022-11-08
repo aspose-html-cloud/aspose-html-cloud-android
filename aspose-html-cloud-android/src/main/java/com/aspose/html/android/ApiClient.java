@@ -96,7 +96,7 @@ public class ApiClient {
                             .addHeader("Authorization", accessToken)
 							.addHeader("User-Agent", userAgent)
 							.addHeader(clientHeaderName, "aspose.html-cloud android sdk")
-							.addHeader(clientVersionHeaderName, "22.10.1");
+							.addHeader(clientVersionHeaderName, "22.11.1");
 
                     //ToDo: Kestrel decode %2F('/') and %5C ('\') to '/' bug
                     String orignUrl = original.url().toString();

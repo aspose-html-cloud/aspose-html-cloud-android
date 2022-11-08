@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud-android</artifactId>
-		<version>22.10.1</version>
+		<version>22.11.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -72,6 +72,9 @@ All URIs are relative to *https://api.aspose.cloud/*
 - EPUB -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
 - MD -> PDF, XPS, DOCX, HTML, MHTML, JPEG, BMP, PNG, TIFF, GIF
 - MHTML -> PDF, XPS, DOCX, JPEG, BMP, PNG, TIFF, GIF
+- SVG -> PDF, XPS, JPEG, BMP, PNG, TIFF, GIF
+- JPEG, BMP, PNG, TIFF, GIF -> SVG
+
 
 ## Conversion builder
 

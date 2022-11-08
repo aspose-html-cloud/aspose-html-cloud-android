@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud-android</artifactId>
-		<version>22.10.1</version>
+		<version>22.11.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
