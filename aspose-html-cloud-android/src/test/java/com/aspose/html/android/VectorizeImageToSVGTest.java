@@ -2,8 +2,8 @@ package com.aspose.html.android;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.aspose.html.android.model.ConversionResult;
-import com.aspose.html.android.options.SVGConversionOptions;
+import com.aspose.html.android.model.OperationResult;
+import com.aspose.html.android.options.VectorizationOptions;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,11 +27,11 @@ public class VectorizeImageToSVGTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new VectorizationBuilder()
                 .fromLocalFile(inputFile + ext)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.vectorize(builder);
+        OperationResult result = api.vectorize(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }
@@ -45,18 +45,18 @@ public class VectorizeImageToSVGTest extends BaseTest {
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        SVGConversionOptions opts = new SVGConversionOptions()
+        VectorizationOptions opts = new VectorizationOptions()
                 .setErrorThreshold(50)
                 .setColorLimit(2)
                 .setLineWidth(1.5)
                 .setMaxIteration(10);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new VectorizationBuilder()
                 .fromLocalFile(inputFile + ext)
                 .useOptions(opts)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.vectorize(builder);
+        OperationResult result = api.vectorize(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }

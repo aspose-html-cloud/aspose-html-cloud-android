@@ -1,6 +1,6 @@
 package com.aspose.html.android;
 
-import com.aspose.html.android.options.ConversionOptions;
+import com.aspose.html.android.options.Options;
 import com.aspose.html.android.options.ImageConversionOptions;
 import com.aspose.html.android.options.MarkdownConversionOptions;
 import com.aspose.html.android.options.PDFConversionOptions;
@@ -14,7 +14,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalImageParamsAll(){
-        ConversionOptions source = new ImageConversionOptions()
+        Options source = new ImageConversionOptions()
                 .setHeight(800)
                 .setWidth(1000)
                 .setLeftMargin(10)
@@ -30,7 +30,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalImageParamsPart(){
-        ConversionOptions source = new ImageConversionOptions()
+        Options source = new ImageConversionOptions()
                 .setHeight(800)
                 .setWidth(1000);
 
@@ -42,7 +42,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalImageParamsZero(){
-        ConversionOptions source = new ImageConversionOptions();
+        Options source = new ImageConversionOptions();
 
         String expected = "{}";
 
@@ -52,7 +52,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalPDFParamsAll(){
-        ConversionOptions source = new PDFConversionOptions()
+        Options source = new PDFConversionOptions()
                 .setWidth(5.8)
                 .setHeight(8.3)
                 .setTopMargin(0.5)
@@ -69,7 +69,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalPDFParamsPart(){
-        ConversionOptions source = new PDFConversionOptions() .setQuality(95);
+        Options source = new PDFConversionOptions() .setQuality(95);
 
 
         String expected = "{\"jpegQuality\":95}";
@@ -80,7 +80,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalPDFParamsZero(){
-        ConversionOptions source = new PDFConversionOptions();
+        Options source = new PDFConversionOptions();
 
         String expected = "{}";
 
@@ -90,7 +90,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalXPSParamsAll(){
-        ConversionOptions source = new XPSConversionOptions()
+        Options source = new XPSConversionOptions()
                 .setWidth(5.8)
                 .setHeight(8.3)
                 .setTopMargin(0.5)
@@ -106,7 +106,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalXPSParamsPart(){
-        ConversionOptions source = new XPSConversionOptions()
+        Options source = new XPSConversionOptions()
                 .setHeight(800)
                 .setWidth(1000);
 
@@ -118,7 +118,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalXPSParamsZero(){
-        ConversionOptions source = new XPSConversionOptions();
+        Options source = new XPSConversionOptions();
 
         String expected = "{}";
 
@@ -128,7 +128,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalMarkdownParamsAll(){
-        ConversionOptions source = new MarkdownConversionOptions().setUseGit(true);
+        Options source = new MarkdownConversionOptions().setUseGit(true);
 
         String expected = "{\"useGit\":true}";
 
@@ -138,7 +138,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalMarkdownParamsPart(){
-        ConversionOptions source = new MarkdownConversionOptions().setUseGit(false);
+        Options source = new MarkdownConversionOptions().setUseGit(false);
 
         String expected =  "{\"useGit\":false}";
 
@@ -148,7 +148,7 @@ public class SerializatorTest {
 
     @Test
     public void OptionalMarkdownParamsZero(){
-        ConversionOptions source = new XPSConversionOptions();
+        Options source = new XPSConversionOptions();
 
         String expected = "{}";
 

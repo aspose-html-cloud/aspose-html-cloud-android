@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud-android</artifactId>
-		<version>22.11.1</version>
+		<version>22.12.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -108,7 +108,7 @@ The target directory for a conversion result.
 | SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a conversion result.    |
 | SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a conversion result. |
 
-## ConversionResult
+## OperationResult
 
 Result object for conversion.
 

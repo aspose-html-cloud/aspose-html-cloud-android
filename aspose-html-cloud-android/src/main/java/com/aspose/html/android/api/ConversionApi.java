@@ -27,8 +27,8 @@
 
 package com.aspose.html.android.api;
 
-import com.aspose.html.android.model.ConversionRequest;
-import com.aspose.html.android.model.ConversionResult;
+import com.aspose.html.android.model.JobRequest;
+import com.aspose.html.android.model.OperationResult;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -40,12 +40,12 @@ import retrofit2.http.Path;
 public interface ConversionApi  {
     @Headers({"Content-Type:application/json"})
     @POST("v4.0/html/conversion/{from}-{to}")
-    public Call<ConversionResult> convert(
-            @Body ConversionRequest request,
+    public Call<OperationResult> convert(
+            @Body JobRequest request,
             @Path("from") String from,
             @Path("to") String to);
 
     @Headers({"Content-Type:application/json"})
     @GET("v4.0/html/conversion/{id}")
-    public Call<ConversionResult> getConversionStatus(@Path("id") String id);
+    public Call<OperationResult> getConversionStatus(@Path("id") String id);
 }

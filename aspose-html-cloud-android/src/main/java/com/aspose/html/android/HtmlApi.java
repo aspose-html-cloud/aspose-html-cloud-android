@@ -2,11 +2,10 @@ package com.aspose.html.android;
 
 import com.aspose.html.android.api.ConversionApi;
 import com.aspose.html.android.api.StorageApi;
-import com.aspose.html.android.model.ConversionRequest;
-import com.aspose.html.android.model.ConversionResult;
+import com.aspose.html.android.model.JobRequest;
+import com.aspose.html.android.model.OperationResult;
 import com.aspose.html.android.model.FilesUploadResult;
 import com.aspose.html.android.model.InputFormats;
-import com.aspose.html.android.model.ObjectExist;
 import com.aspose.html.android.model.OutputFormats;
 
 import java.io.File;
@@ -14,10 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.MediaType;
@@ -45,7 +41,7 @@ public class HtmlApi {
         conversionApi = new ApiClient().createService(ConversionApi.class);
     }
 
-    public ConversionResult convert(ConverterBuilder builder)
+    public OperationResult convert(JobBuilder builder)
     {
         //Check parameters
         if(builder.source.inputFormat == null) {
@@ -64,7 +60,7 @@ public class HtmlApi {
             throw new IllegalArgumentException("The output format is absent");
         }
 
-        ConversionRequest req = new ConversionRequest();
+        JobRequest req = new JobRequest();
 
         if(builder.source.isLocal != null && builder.source.isLocal) {
             File file = new File(builder.source.filePath);
@@ -102,12 +98,12 @@ public class HtmlApi {
             req.setOutputFile(builder.target.filePath);
         }
 
-        Call<ConversionResult> call_convert = conversionApi.convert(
+        Call<OperationResult> call_convert = conversionApi.convert(
                 req,
                 builder.source.inputFormat.toString(),
                 builder.target.outputFormat.toString());
 
-       Response<ConversionResult> result = null;
+       Response<OperationResult> result = null;
 
         try {
             result = call_convert.execute();
@@ -116,7 +112,7 @@ public class HtmlApi {
         }
 
         // Wait for result
-        ConversionResult resp = WaitForResult(result.body().id);
+        OperationResult resp = WaitForResult(result.body().id);
 
         if(resp == null || !resp.status.equals("completed")) {
             throw new RuntimeException("Conversion failed");
@@ -159,7 +155,7 @@ public class HtmlApi {
         return resp;
     }
 
-    public ConversionResult vectorize(ConverterBuilder builder)
+    public OperationResult vectorize(JobBuilder builder)
     {
         if(builder.source.inputFormat == null || !isImage(builder.source.inputFormat)) {
             throw new IllegalArgumentException("The input file must be image");
@@ -238,12 +234,12 @@ public class HtmlApi {
         return true;
     }
 
-    private ConversionResult WaitForResult(String id) {
+    private OperationResult WaitForResult(String id) {
         try {
             for(;;) {
-                Call<ConversionResult> call = conversionApi.getConversionStatus(id);
-                Response<ConversionResult> res = call.execute();
-                ConversionResult result = res.body();
+                Call<OperationResult> call = conversionApi.getConversionStatus(id);
+                Response<OperationResult> res = call.execute();
+                OperationResult result = res.body();
                 if( result.code != 200
                     || result.status.equals("faulted")
                     || result.status.equals("canceled")

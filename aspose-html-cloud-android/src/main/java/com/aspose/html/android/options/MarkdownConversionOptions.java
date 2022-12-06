@@ -1,8 +1,6 @@
 package com.aspose.html.android.options;
 
-import com.aspose.html.android.model.OutputFormats;
-
-public class MarkdownConversionOptions implements ConversionOptions{
+public class MarkdownConversionOptions implements Options {
 
     public boolean useGit;
 

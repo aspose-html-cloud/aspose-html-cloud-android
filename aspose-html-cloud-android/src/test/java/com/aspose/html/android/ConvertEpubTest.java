@@ -2,7 +2,7 @@ package com.aspose.html.android;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.aspose.html.android.model.ConversionResult;
+import com.aspose.html.android.model.OperationResult;
 import com.aspose.html.android.options.ImageConversionOptions;
 import com.aspose.html.android.options.PDFConversionOptions;
 import com.aspose.html.android.options.XPSConversionOptions;
@@ -31,11 +31,11 @@ public class ConvertEpubTest extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         File dst = new File(result.getFile());
         assertTrue(dst.exists());
     }
@@ -49,11 +49,11 @@ public class ConvertEpubTest extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToStorage(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         assertTrue(TestHelper.isExist(result.getFile()));
         TestHelper.deleteFile(result.getFile());
     }
@@ -75,12 +75,12 @@ public class ConvertEpubTest extends BaseTest{
                 .setRightMargin(0.5)
                 .setQuality(95);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         String target = Paths.get(builder.target.filePath).getParent().toString()
                 + "/" + Paths.get(result.getFile()).getFileName().toString();
         File testFile = new File(target);
@@ -103,12 +103,12 @@ public class ConvertEpubTest extends BaseTest{
                 .setLeftMargin(0.5)
                 .setRightMargin(0.5);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         String target = Paths.get(builder.target.filePath).getParent().toString()
                 + "/" + Paths.get(result.getFile()).getFileName().toString();
         File testFile = new File(target);
@@ -133,12 +133,12 @@ public class ConvertEpubTest extends BaseTest{
                 .setLeftMargin(20)
                 .setRightMargin(20);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt)
                 .saveToLocal(outputFile);
 
-        ConversionResult result = api.convert(builder);
+        OperationResult result = api.convert(builder);
         File testFile = new File(result.getFile());
         assertTrue(testFile.exists());
     }

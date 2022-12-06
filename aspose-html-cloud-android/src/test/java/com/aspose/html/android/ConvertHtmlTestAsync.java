@@ -2,7 +2,7 @@ package com.aspose.html.android;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import com.aspose.html.android.model.ConversionResult;
+import com.aspose.html.android.model.OperationResult;
 import com.aspose.html.android.options.ImageConversionOptions;
 import com.aspose.html.android.options.PDFConversionOptions;
 import com.aspose.html.android.options.XPSConversionOptions;
@@ -33,11 +33,11 @@ public class ConvertHtmlTestAsync extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToLocal(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -62,11 +62,11 @@ public class ConvertHtmlTestAsync extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .saveToStorage(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -86,11 +86,11 @@ public class ConvertHtmlTestAsync extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromUrl(inputUrl)
                 .saveToLocal(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -109,11 +109,11 @@ public class ConvertHtmlTestAsync extends BaseTest{
         File f = new File(outputFile);
         if(f.exists()) f.delete();
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromUrl(inputUrl)
                 .saveToStorage(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -141,12 +141,12 @@ public class ConvertHtmlTestAsync extends BaseTest{
                 .setRightMargin(0.5)
                 .setQuality(95);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -174,12 +174,12 @@ public class ConvertHtmlTestAsync extends BaseTest{
                 .setLeftMargin(0.5)
                 .setRightMargin(0.5);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt_A5)
                 .saveToLocal(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
 
         cf.whenComplete((result, err) -> {
@@ -209,12 +209,12 @@ public class ConvertHtmlTestAsync extends BaseTest{
                 .setLeftMargin(20)
                 .setRightMargin(20);
 
-        ConverterBuilder builder = new ConverterBuilder()
+        JobBuilder builder = new ConverterBuilder()
                 .fromLocalFile(inputFile)
                 .useOptions(opt)
                 .saveToLocal(outputFile);
 
-        CompletableFuture<ConversionResult>
+        CompletableFuture<OperationResult>
                 cf = CompletableFuture.supplyAsync(() -> api.convert(builder));
         cf.whenComplete((result, err) -> {
             String target = Paths.get(builder.target.filePath).getParent().toString()
@@ -225,7 +225,7 @@ public class ConvertHtmlTestAsync extends BaseTest{
         waitForDone(cf);
     }
 
-    private void waitForDone(CompletableFuture<ConversionResult> cf) {
+    private void waitForDone(CompletableFuture<OperationResult> cf) {
         while (!cf.isDone()) {
             try {
                 Thread.sleep(3000);

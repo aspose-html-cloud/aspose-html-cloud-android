@@ -1,9 +1,9 @@
-## Conversion options
+## Options
 
 <a name="PDFConversionOptions"></a>
 ### PDFConversionOptions
 ```code
-ConversionOptions pdfOpts_A4 = new PDFConversionOptions()
+Options pdfOpts_A4 = new PDFConversionOptions()
     .setHeight(11.7)
     .setWidth(8.3)
     .setLeftMargin(0.2)
@@ -13,21 +13,21 @@ ConversionOptions pdfOpts_A4 = new PDFConversionOptions()
     .setQuality(95);
 ```
 
-| Name             | Type                 | Description                                      | Notes      |
-|------------------|----------------------|--------------------------------------------------|------------|
-| **width**        | **Optional<Double>** | Resulting document page width in inches.         | [optional] | 
-| **height**       | **Optional<Double>** | Resulting document page height in inches.        | [optional] |
-| **leftMargin**   | **Optional<Double>** | Left resulting document page margin in inches.   | [optional] |
-| **rightMargin**  | **Optional<Double>** | Right resulting document page margin in inches.  | [optional] |
-| **topMargin**    | **Optional<Double>** | Top resulting document page margin in inches.    | [optional] |
-| **bottomMargin** | **Optional<Double>** | Bottom resulting document page margin in inches. | [optional] |
-| **jpegQuality**  | **Optional<Double>** | Quality of jpeg compression in percent.          | [optional] |
+| Name             | Type                  | Description                                      | Notes      | 	
+|------------------|-----------------------|--------------------------------------------------|------------|
+| **width**        | **Optional<Double>**  | Resulting document page width in inches.         | [optional] | 
+| **height**       | **Optional<Double>**  | Resulting document page height in inches.        | [optional] |
+| **leftMargin**   | **Optional<Double>**  | Left resulting document page margin in inches.   | [optional] |
+| **rightMargin**  | **Optional<Double>**  | Right resulting document page margin in inches.  | [optional] |
+| **topMargin**    | **Optional<Double>**  | Top resulting document page margin in inches.    | [optional] |
+| **bottomMargin** | **Optional<Double>**  | Bottom resulting document page margin in inches. | [optional] |
+| **jpegQuality**  | **Optional<Integer>** | Quality of jpeg compression in percent.          | [optional] |
 
 <a name="XPSConversionOptions"></a>
 
 ### XPSConversionOptions
 ```code
-ConversionOptions xpsOpts_A5 = new XPSConversionOptions()
+Options xpsOpts_A5 = new XPSConversionOptions()
     .setHeight(8.3)
     .setWidth(5.8)
     .setLeftMargin(0.5)
@@ -49,7 +49,7 @@ ConversionOptions xpsOpts_A5 = new XPSConversionOptions()
 ### DOCConversionOptions
 
 ```code
-ConversionOptions docOpts_A3 = new DOCConversionOptions()
+Options docOpts_A3 = new DOCConversionOptions()
     .setHeight(16.5)
     .setWidth(11.7)
     .setLeftMargin(0.5)
@@ -70,7 +70,7 @@ ConversionOptions docOpts_A3 = new DOCConversionOptions()
 <a name="ImageConversionOptions"></a>
 ### ImageConversionOptions
 ```code
-ConversionOptions opts = new ImageConversionOptions()
+Options opts = new ImageConversionOptions()
     .setHeight(800)
     .setWidth(1000)
     .setLeftMargin(10)
@@ -92,18 +92,17 @@ ConversionOptions opts = new ImageConversionOptions()
 <a name="MarkdownConversionOptions"></a>
 ### MarkdownConversionOptions
 ```code
-ConversionOptions mdOpts = new MarkdownConversionOptions()
+Options mdOpts = new MarkdownConversionOptions()
     .setUseGit(true);
 ```
 | Name       | Type        | Description                                                        | Notes       |
 |------------|-------------|--------------------------------------------------------------------|-------------|
 | **useGit** | **boolean** | Use [Git Markdown flavor](https://github.github.com/gfm/) to save. | [optional]  |
 
-
-<a name="SVGConversionOptions"></a>
-### SVGConversionOptions
+<a name="VectorizationOptions"></a>
+### VectorizationOptions
 ```code
-ConversionOptions svgOpts = new SVGConversionOptions()
+Options svgOpts = new VectorizationOptions()
     .setErrorThreshold(30)
     .setMaxIteration(25)
     .setColorLimit(25)

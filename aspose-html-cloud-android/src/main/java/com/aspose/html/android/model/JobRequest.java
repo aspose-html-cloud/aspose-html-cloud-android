@@ -1,17 +1,16 @@
 package com.aspose.html.android.model;
 
-import com.aspose.html.android.options.ConversionOptions;
+import com.aspose.html.android.options.Options;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-import java.util.Map;
 
-public class ConversionRequest   {
+public class JobRequest {
   private String inputPath = null;
   private String storageName = null;
   private List<String> resources = null;
   private String outputFile = null;
-  private ConversionOptions options = null;
+  private Options options = null;
 
  /**
    * Get inputPath
@@ -26,7 +25,7 @@ public class ConversionRequest   {
     this.inputPath = inputPath;
   }
 
-  public ConversionRequest inputPath(String inputPath) {
+  public JobRequest inputPath(String inputPath) {
     this.inputPath = inputPath;
     return this;
   }
@@ -44,7 +43,7 @@ public class ConversionRequest   {
     this.storageName = storageName;
   }
 
-  public ConversionRequest storageName(String storageName) {
+  public JobRequest storageName(String storageName) {
     this.storageName = storageName;
     return this;
   }
@@ -62,12 +61,12 @@ public class ConversionRequest   {
     this.resources = resources;
   }
 
-  public ConversionRequest resources(List<String> resources) {
+  public JobRequest resources(List<String> resources) {
     this.resources = resources;
     return this;
   }
 
-  public ConversionRequest addResourcesItem(String resourcesItem) {
+  public JobRequest addResourcesItem(String resourcesItem) {
     this.resources.add(resourcesItem);
     return this;
   }
@@ -85,7 +84,7 @@ public class ConversionRequest   {
     this.outputFile = outputFile;
   }
 
-  public ConversionRequest outputFile(String outputFile) {
+  public JobRequest outputFile(String outputFile) {
     this.outputFile = outputFile;
     return this;
   }
@@ -95,15 +94,15 @@ public class ConversionRequest   {
    * @return options
   **/
   @SerializedName("options")
-  public ConversionOptions getOptions() {
+  public Options getOptions() {
     return options;
   }
 
-  public void setOptions(ConversionOptions options) {
+  public void setOptions(Options options) {
     this.options = options;
   }
 
-  public ConversionRequest options(ConversionOptions options) {
+  public JobRequest options(Options options) {
     this.options = options;
     return this;
   }
@@ -111,7 +110,7 @@ public class ConversionRequest   {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ConversionRequest {\n");
+    sb.append("class JobRequest {\n");
     
     sb.append("    inputPath: ").append(toIndentedString(inputPath)).append("\n");
     sb.append("    storageName: ").append(toIndentedString(storageName)).append("\n");

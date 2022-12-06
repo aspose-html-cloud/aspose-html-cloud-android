@@ -39,7 +39,7 @@ Add this dependency to your project's POM:
 	<dependency>
 		<groupId>com.aspose</groupId>
 		<artifactId>aspose-html-cloud-android</artifactId>
-		<version>22.11.1</version>
+		<version>22.12.1</version>
 		<scope>compile</scope>
 	</dependency>
 	...
@@ -64,6 +64,125 @@ To run test from command string:
 gradlew.bat test
 ```
 
+
+### Convert URL tp PDF format
+
+```java
+package com.aspose.test_package;
+
+import com.aspose.html.Configuration;
+import com.aspose.html.ConverterBuilder;
+import com.aspose.html.model.OperationResult;
+import com.aspose.html.options.PDFConversionOptions;
+
+import java.io.File;
+
+public class App {
+
+
+    public static void main(String[] args) {
+
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
+
+        Configuration.setBasePath("https://api.aspose.cloud");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+        Configuration.setUserAgent("WebKit");
+        Configuration.setDebug(true);
+
+        HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+
+
+        String inputUrl = "https://stallman.org/articles/anonymous-payments-thru-phones.html";
+        String outputFile = "c:/temp/Output.pdf";
+
+        File f = new File(outputFile);
+        if (f.exists()) f.delete();
+
+        PDFConversionOptions opt_A5 = new PDFConversionOptions()
+                .setWidth(5.8)
+                .setHeight(8.3)
+                .setTopMargin(0.5)
+                .setBottomMargin(0.5)
+                .setLeftMargin(0.5)
+                .setRightMargin(0.5)
+                .setQuality(95);
+
+        JobBuilder builder = new ConverterBuilder()
+                .fromUrl(inputUrl)
+                .useOptions(opt)
+                .saveToLocal(outputFile);
+
+        OperationResult result = api.convert(builder);
+
+        String f = result.getFile();
+
+        File dst = new File(result.getFile());
+
+        if (dst.exists()) {
+            System.out.println("Result file is " + dst);
+        } else {
+            System.out.println("Error conversion");
+        }
+    }
+}
+```
+
+
+### Vectorize the image to SVG format
+
+```java
+package com.aspose.test_package;
+
+import com.aspose.html.Configuration;
+import com.aspose.html.VectorizationBuilder;
+import com.aspose.html.model.OperationResult;
+import com.aspose.html.options.VectorizationOptions;
+
+import java.io.File;
+
+public class App {
+
+
+    public static void main(String[] args) {
+
+// Get keys from aspose site.
+// There is free quota available. 
+// For more details, see https://purchase.aspose.cloud/pricing
+
+        Configuration.setBasePath("https://api.aspose.cloud");
+        Configuration.setAuthPath("https://api.aspose.cloud/connect/token");
+        Configuration.setUserAgent("WebKit");
+        Configuration.setDebug(true);
+
+        HtmlApi api = new HtmlApi("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX", "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX");
+
+
+        VectorizationOptions opts = new VectorizationOptions()
+                .setErrorThreshold(50)
+                .setColorLimit(30)
+                .setLineWidth(1.5)
+                .setMaxIteration(10);
+
+        JobBuilder builder = new VectorizationBuilder()
+                .fromLocalFile("/path/to/input/file.png")
+                .useOptions(opts)
+                .saveToLocal("/path/to/output/file.svg");
+
+        OperationResult result = api.vectorize(builder);
+        File dst = new File(result.getFile());
+
+        if (dst.exists()) {
+            System.out.println("Result file is " + dst);
+        } else {
+            System.out.println("Error vectorization");
+        }
+    }
+}
+```
+
+
 # Documentation
 All URIs are relative to *https://api.aspose.cloud/*
 
@@ -76,7 +195,7 @@ All URIs are relative to *https://api.aspose.cloud/*
 - JPEG, BMP, PNG, TIFF, GIF -> SVG
 
 
-## Conversion builder
+## JobBuilder (VectorizationBuilder, ConverterBuilder)
 
 | Method                                                   | Parameters                                                                             | Description                                     |
 |----------------------------------------------------------|----------------------------------------------------------------------------------------|-------------------------------------------------|
@@ -87,40 +206,38 @@ All URIs are relative to *https://api.aspose.cloud/*
 | **saveToLocal(String fileName)**                         | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
 | **saveToStorage(String fileName)**                       | fileName - full path to the result.                                                    | Recreating, if the file exists.                 |
 | **saveToStorage(String fileName, String storageName)**   | fileName - full path to the result. storageName - your storage, if exist               | Recreating, if the file exists.                 |
-| **useOptions(ConversionOptions options)**                | options - additional options for conversion.                                           | (optional)                                      |
+| **useOptions(Options options)**                | options - additional options for operation.                                            | (optional)                                      |
 
+### useOptions(Options)
 
-### useOptions(ConversionOptions)
+Specifies the output format for operation.
 
-Specifies the output format for conversion.
-
-| Options                                                                          | Description                                                |
-|----------------------------------------------------------------------------------|------------------------------------------------------------|
-| [ImageConversionOptions](docs/ConversionOptions.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |  
-| [PDFConversionOptions](docs/ConversionOptions.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
-| [XPSConversionOptions](docs/ConversionOptions.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
-| [DOCConversionOptions](docs/ConversionOptions.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
-| [MarkdownConversionOptions](docs/ConversionOptions.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
-| [SVGConversionOptions](docs/ConversionOptions.md#SVGConversionOptions)           | Converting images to SVG (trace image).                    |
+| Options                                                                          | Description                                      |
+|----------------------------------------------------------------------------------|--------------------------------------------------|
+| [ImageConversionOptions](docs/Options.md#ImageConversionOptions)       | Converting source file or URL to single or several images. |
+| [PDFConversionOptions](docs/Options.md#PDFConversionOptions)           | Converting source file or URL to PDF.                      |
+| [XPSConversionOptions](docs/Options.md#XPSConversionOptions)           | Converting source file or URL to XPS.                      |
+| [DOCConversionOptions](docs/Options.md#DOCConversionOptions)           | Converting source file or URL to DOCX.                     |
+| [MarkdownConversionOptions](docs/Options.md#MarkdownConversionOptions) | Converting source file or URL to Markdown.                 |
+| [VectorizationOptions](docs/Options.md#VectorizationOptions)           | Vectorize images to SVG (trace image).                     |
 
 ### SaveTo...
 
-The target directory for a conversion result.
+The target directory for a result.
 
-| Method                                | Parameters                                    | Description                                                          |
-|---------------------------------------|-----------------------------------------------|----------------------------------------------------------------------|
-| SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a conversion result.    |
-| SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a conversion result. |
+| Method                                | Parameters                                    | Description                                               |
+|---------------------------------------|-----------------------------------------------|-----------------------------------------------------------|
+| SaveToLocal(string outputDirectory)   | outputDirectory - directory to save a result. | A directory in the local file system to save a result.    |
+| SaveToStorage(string outputDirectory) | outputDirectory - directory to save a result. | A directory in the cloud (user storage) to save a result. |
 
-## ConversionResult
+## OperationResult
 
-Result object for conversion.
+Result object for operation.
 
 | Field              | Description                                       |
 |--------------------|---------------------------------------------------|
 | String file        | A result file.                                    |
-| String description | A description in case of unsuccessful conversion. |
-
+| String description | A description in case of unsuccessful operation.  |
 
 [Tests](./aspose-html-cloud-android/src/test/java/com/aspose/html/android/) contain various examples of using the Aspose.HTML SDK for Android.
 
